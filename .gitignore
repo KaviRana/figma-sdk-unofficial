@@ -21,3 +21,6 @@ logs/
 .env
 .env.*
 !.env.example
+
+# Working notes live outside the repo (~/voxgig-notes/NOTES.md)
+NOTES.md
