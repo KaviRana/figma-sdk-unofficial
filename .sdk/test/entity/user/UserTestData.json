@@ -1,0 +1,40 @@
+{
+  "existing": {
+    "user": {
+      "USER00": {
+        "email": "s28",
+        "handle": "s29",
+        "id": "USER00",
+        "img_url": "s2b"
+      },
+      "USER01": {
+        "email": "s50",
+        "handle": "s51",
+        "id": "USER01",
+        "img_url": "s53"
+      },
+      "USER02": {
+        "email": "s78",
+        "handle": "s79",
+        "id": "USER02",
+        "img_url": "s7b"
+      }
+    }
+  },
+  "new": {
+    "user": {
+      "user_ref01": {
+        "email": "sa0",
+        "handle": "sa1",
+        "img_url": "sa3"
+      }
+    }
+  },
+  "requests": {
+    "GET /v1/me": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

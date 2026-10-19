@@ -1,0 +1,48 @@
+# BasicProjectFlow
+
+main: kit: flow: BasicProjectFlow:
+{
+  entity: "project",
+  kind: "basic",
+  name: "BasicProjectFlow",
+  step: [
+    {
+      m: {
+        team_id: "team01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "project_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "project_ref01",
+        srcdatavar: "project_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "project01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-project_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicProjectFlow"
+}

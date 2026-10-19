@@ -1,0 +1,121 @@
+# Entity: payment
+
+main: kit: entity: payment: {
+
+  alias: field: {}
+
+  fields: {
+    date_of_purchase: {
+      fo: "date-time"
+      h: "Date Of Purchase"
+      n: "date_of_purchase"
+      r: false
+      sh: "The UTC ISO 8601 timestamp indicating when the user purchased the resource."
+      t: "`$STRING`"
+    }
+    payment_status: {
+      h: "Payment Status"
+      n: "payment_status"
+      r: true
+      sh: "An object describing the user's payment status."
+      t: "`$OBJECT`"
+    }
+    resource_id: {
+      h: "Resource Id"
+      n: "resource_id"
+      r: true
+      sh: "The ID of the plugin, widget, or Community file that was queried."
+      t: "`$STRING`"
+    }
+    resource_type: {
+      h: "Resource Type"
+      n: "resource_type"
+      r: true
+      sh: "The type of the resource."
+      t: "`$STRING`"
+    }
+    user_id: {
+      h: "User Id"
+      n: "user_id"
+      r: true
+      sh: "The ID of the user whose payment information was queried."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "payment"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v1/payments"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "community_file_id"
+                or: "community_file_id"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "plugin_id"
+                or: "plugin_id"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "plugin_payment_token"
+                or: "plugin_payment_token"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "user_id"
+                or: "user_id"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "widget_id"
+                or: "widget_id"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v1/payments"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "payments"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.meta`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

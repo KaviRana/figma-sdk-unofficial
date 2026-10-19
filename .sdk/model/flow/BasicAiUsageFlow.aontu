@@ -1,0 +1,22 @@
+# BasicAiUsageFlow
+
+main: kit: flow: BasicAiUsageFlow:
+{
+  entity: "ai_usage",
+  kind: "basic",
+  name: "BasicAiUsageFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "ai_usage_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAiUsageFlow"
+}

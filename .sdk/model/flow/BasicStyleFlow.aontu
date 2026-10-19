@@ -1,0 +1,32 @@
+# BasicStyleFlow
+
+main: kit: flow: BasicStyleFlow:
+{
+  entity: "style",
+  kind: "basic",
+  name: "BasicStyleFlow",
+  step: [
+    {
+      i: {
+        ref: "style_ref01",
+        srcdatavar: "style_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "style01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-style_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicStyleFlow"
+}

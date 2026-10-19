@@ -1,0 +1,28 @@
+# BasicOEmbedFlow
+
+main: kit: flow: BasicOEmbedFlow:
+{
+  entity: "o_embed",
+  kind: "basic",
+  name: "BasicOEmbedFlow",
+  step: [
+    {
+      i: {
+        ref: "o_embed_ref01",
+        srcdatavar: "o_embed_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-o_embed_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicOEmbedFlow"
+}

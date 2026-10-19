@@ -1,0 +1,32 @@
+# BasicLibraryAnalyticsFlow
+
+main: kit: flow: BasicLibraryAnalyticsFlow:
+{
+  entity: "library_analytics",
+  kind: "basic",
+  name: "BasicLibraryAnalyticsFlow",
+  step: [
+    {
+      i: {
+        ref: "library_analytics_ref01",
+        srcdatavar: "library_analytics_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "library_analytics01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-library_analytics_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicLibraryAnalyticsFlow"
+}

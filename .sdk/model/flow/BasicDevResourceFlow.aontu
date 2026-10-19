@@ -1,0 +1,91 @@
+# BasicDevResourceFlow
+
+main: kit: flow: BasicDevResourceFlow:
+{
+  entity: "dev_resource",
+  kind: "basic",
+  name: "BasicDevResourceFlow",
+  step: [
+    {
+      i: {
+        ref: "dev_resource_ref01"
+      }
+
+      m: {
+        file_key: "file_key01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        file_key: "file_key01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "dev_resource_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "dev_resource_ref01",
+        srcdatavar: "dev_resource_ref01_data",
+        suffix: "_up0",
+        textfield: "file_key"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-dev_resource_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "dev_resource_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        file_key: "file_key01",
+        id: "dev_resource01"
+      }
+
+      o: "remove"
+    }
+
+    {
+      i: {
+        suffix: "_rt0"
+      }
+
+      m: {
+        file_key: "file_key01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "dev_resource_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicDevResourceFlow"
+}

@@ -1,0 +1,190 @@
+# Entity: o_embed
+
+main: kit: entity: o_embed: {
+
+  alias: field: {}
+
+  fields: {
+    cache_age: {
+      h: "Cache Age"
+      n: "cache_age"
+      r: true
+      sh: "Suggested cache lifetime for this response in seconds."
+      t: "`$INTEGER`"
+    }
+    folder_name: {
+      h: "Folder Name"
+      n: "folder_name"
+      r: false
+      sh: "The name of the folder containing the file, if the file resides in a folder."
+      t: "`$STRING`"
+    }
+    height: {
+      h: "Height"
+      n: "height"
+      r: true
+      sh: "Height of the embed in pixels."
+      t: "`$INTEGER`"
+    }
+    html: {
+      h: "Html"
+      n: "html"
+      r: true
+      sh: "The HTML for embedding the file."
+      t: "`$STRING`"
+    }
+    is_published_site: {
+      h: "Is Published Site"
+      n: "is_published_site"
+      r: false
+      sh: "Only present and \"true\" when the resource is a published Make."
+      t: "`$BOOLEAN`"
+    }
+    key: {
+      h: "Key"
+      n: "key"
+      r: false
+      sh: "The key of the Figma file."
+      t: "`$STRING`"
+    }
+    provider_name: {
+      h: "Provider Name"
+      n: "provider_name"
+      r: true
+      sh: "The name of the content provider."
+      t: "`$STRING`"
+    }
+    provider_url: {
+      h: "Provider Url"
+      n: "provider_url"
+      r: true
+      sh: "The URL of the content provider's website."
+      t: "`$STRING`"
+    }
+    thumbnail_height: {
+      h: "Thumbnail Height"
+      n: "thumbnail_height"
+      r: false
+      sh: "Height of the thumbnail image in pixels."
+      t: "`$INTEGER`"
+    }
+    thumbnail_url: {
+      h: "Thumbnail Url"
+      n: "thumbnail_url"
+      r: false
+      sh: "URL of a thumbnail image for the file."
+      t: "`$STRING`"
+    }
+    thumbnail_width: {
+      h: "Thumbnail Width"
+      n: "thumbnail_width"
+      r: false
+      sh: "Width of the thumbnail image in pixels."
+      t: "`$INTEGER`"
+    }
+    title: {
+      h: "Title"
+      n: "title"
+      r: true
+      sh: "The title of the Figma file or published Make site."
+      t: "`$STRING`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: true
+      sh: "The oEmbed response type."
+      t: "`$STRING`"
+    }
+    url: {
+      h: "Url"
+      n: "url"
+      r: true
+      sh: "The canonical URL of the resource."
+      t: "`$STRING`"
+    }
+    version: {
+      h: "Version"
+      n: "version"
+      r: true
+      sh: "The oEmbed specification version."
+      t: "`$STRING`"
+    }
+    width: {
+      h: "Width"
+      n: "width"
+      r: true
+      sh: "Width of the embed in pixels."
+      t: "`$INTEGER`"
+    }
+  }
+
+  name: "o_embed"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v1/oembed"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: 450
+                k: "query"
+                n: "maxheight"
+                or: "maxheight"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 800
+                k: "query"
+                n: "maxwidth"
+                or: "maxwidth"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "url"
+                or: "url"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v1/oembed"
+          q: {
+            exist: [
+              "url"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "oembed"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

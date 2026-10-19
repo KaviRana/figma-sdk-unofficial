@@ -1,0 +1,28 @@
+# BasicActivityLogFlow
+
+main: kit: flow: BasicActivityLogFlow:
+{
+  entity: "activity_log",
+  kind: "basic",
+  name: "BasicActivityLogFlow",
+  step: [
+    {
+      i: {
+        ref: "activity_log_ref01",
+        srcdatavar: "activity_log_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-activity_log_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicActivityLogFlow"
+}

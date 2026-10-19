@@ -1,0 +1,304 @@
+# Entity: comment_reaction
+
+main: kit: entity: comment_reaction: {
+
+  alias: field: {}
+
+  fields: {
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: true
+      sh: "The UTC ISO 8601 time at which the reaction was left."
+      t: "`$STRING`"
+    }
+    emoji: {
+      h: "Emoji"
+      n: "emoji"
+      r: true
+      sh: "The emoji type of reaction as shortcode (e.g."
+      t: "`$STRING`"
+    }
+    error: {
+      h: "Error"
+      n: "error"
+      r: true
+      sh: "For successful requests, this value is always `false`."
+      t: "`$BOOLEAN`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      sh: "The status of the request."
+      t: "`$NUMBER`"
+    }
+    user: {
+      h: "User"
+      n: "user"
+      r: true
+      sh: "The user who left the reaction."
+      t: "`$OBJECT`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "comment_reaction"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "emoji"
+          ]
+          co: {
+            id: "POST /v1/files/{file_key}/comments/{comment_id}/reactions"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "file_id"
+                or: "file_key"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "comment_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/files/{file_key}/comments/{comment_id}/reactions"
+          q: {
+            exist: [
+              "file_id"
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              comment_id: "id"
+              file_key: "file_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "files"
+            }
+            {
+              var: "file_id"
+            }
+            {
+              lit: "comments"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "reactions"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v1/files/{file_key}/comments/{comment_id}/reactions"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "file_id"
+                or: "file_key"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "comment_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "cursor"
+                or: "cursor"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v1/files/{file_key}/comments/{comment_id}/reactions"
+          q: {
+            exist: [
+              "file_id"
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              comment_id: "id"
+              file_key: "file_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "files"
+            }
+            {
+              var: "file_id"
+            }
+            {
+              lit: "comments"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "reactions"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.reactions`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /v1/files/{file_key}/comments/{comment_id}/reactions"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "file_id"
+                or: "file_key"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "comment_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "emoji"
+                or: "emoji"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v1/files/{file_key}/comments/{comment_id}/reactions"
+          q: {
+            exist: [
+              "emoji"
+              "file_id"
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              comment_id: "id"
+              file_key: "file_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "files"
+            }
+            {
+              var: "file_id"
+            }
+            {
+              lit: "comments"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "reactions"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.file")]
+  ]
+
+}

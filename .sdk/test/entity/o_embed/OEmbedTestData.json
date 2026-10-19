@@ -1,0 +1,92 @@
+{
+  "existing": {
+    "o_embed": {
+      "O_EMBED00": {
+        "cache_age": 160,
+        "folder_name": "sa1",
+        "height": 162,
+        "html": "sa3",
+        "is_published_site": true,
+        "key": "sa5",
+        "provider_name": "sa6",
+        "provider_url": "sa7",
+        "thumbnail_height": 168,
+        "thumbnail_url": "sa9",
+        "thumbnail_width": 170,
+        "title": "sab",
+        "type": "sac",
+        "url": "sad",
+        "version": "sae",
+        "width": 175,
+        "id": "O_EMBED00"
+      },
+      "O_EMBED01": {
+        "cache_age": 320,
+        "folder_name": "s141",
+        "height": 322,
+        "html": "s143",
+        "is_published_site": true,
+        "key": "s145",
+        "provider_name": "s146",
+        "provider_url": "s147",
+        "thumbnail_height": 328,
+        "thumbnail_url": "s149",
+        "thumbnail_width": 330,
+        "title": "s14b",
+        "type": "s14c",
+        "url": "s14d",
+        "version": "s14e",
+        "width": 335,
+        "id": "O_EMBED01"
+      },
+      "O_EMBED02": {
+        "cache_age": 480,
+        "folder_name": "s1e1",
+        "height": 482,
+        "html": "s1e3",
+        "is_published_site": true,
+        "key": "s1e5",
+        "provider_name": "s1e6",
+        "provider_url": "s1e7",
+        "thumbnail_height": 488,
+        "thumbnail_url": "s1e9",
+        "thumbnail_width": 490,
+        "title": "s1eb",
+        "type": "s1ec",
+        "url": "s1ed",
+        "version": "s1ee",
+        "width": 495,
+        "id": "O_EMBED02"
+      }
+    }
+  },
+  "new": {
+    "o_embed": {
+      "o_embed_ref01": {
+        "cache_age": 640,
+        "folder_name": "s281",
+        "height": 642,
+        "html": "s283",
+        "is_published_site": true,
+        "key": "s285",
+        "provider_name": "s286",
+        "provider_url": "s287",
+        "thumbnail_height": 648,
+        "thumbnail_url": "s289",
+        "thumbnail_width": 650,
+        "title": "s28b",
+        "type": "s28c",
+        "url": "s28d",
+        "version": "s28e",
+        "width": 655
+      }
+    }
+  },
+  "requests": {
+    "GET /v1/oembed": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

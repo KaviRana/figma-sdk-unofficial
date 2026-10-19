@@ -1,0 +1,93 @@
+{
+  "existing": {
+    "style": {
+      "STYLE00": {
+        "created_at": "s8c",
+        "cursor": {},
+        "description": "s8e",
+        "file_key": "s8f",
+        "id": "STYLE00",
+        "key": "s91",
+        "name": "s92",
+        "node_id": "NODE01",
+        "sort_position": "s94",
+        "style_type": "s95",
+        "styles": [],
+        "thumbnail_url": "s97",
+        "updated_at": "s98",
+        "user": {},
+        "team_id": "TEAM01"
+      },
+      "STYLE01": {
+        "created_at": "s118",
+        "cursor": {},
+        "description": "s11a",
+        "file_key": "s11b",
+        "id": "STYLE01",
+        "key": "s11d",
+        "name": "s11e",
+        "node_id": "NODE01",
+        "sort_position": "s120",
+        "style_type": "s121",
+        "styles": [],
+        "thumbnail_url": "s123",
+        "updated_at": "s124",
+        "user": {},
+        "team_id": "TEAM01"
+      },
+      "STYLE02": {
+        "created_at": "s1a4",
+        "cursor": {},
+        "description": "s1a6",
+        "file_key": "s1a7",
+        "id": "STYLE02",
+        "key": "s1a9",
+        "name": "s1aa",
+        "node_id": "NODE01",
+        "sort_position": "s1ac",
+        "style_type": "s1ad",
+        "styles": [],
+        "thumbnail_url": "s1af",
+        "updated_at": "s1b0",
+        "user": {},
+        "team_id": "TEAM01"
+      }
+    }
+  },
+  "new": {
+    "style": {
+      "style_ref01": {
+        "created_at": "s230",
+        "cursor": {},
+        "description": "s232",
+        "file_key": "s233",
+        "key": "s235",
+        "name": "s236",
+        "node_id": "NODE01",
+        "sort_position": "s238",
+        "style_type": "s239",
+        "styles": [],
+        "thumbnail_url": "s23b",
+        "updated_at": "s23c",
+        "user": {}
+      }
+    }
+  },
+  "requests": {
+    "GET /v1/files/{file_key}/styles": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v1/styles/{key}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v1/teams/{team_id}/styles": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

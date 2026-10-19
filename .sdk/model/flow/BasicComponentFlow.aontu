@@ -1,0 +1,32 @@
+# BasicComponentFlow
+
+main: kit: flow: BasicComponentFlow:
+{
+  entity: "component",
+  kind: "basic",
+  name: "BasicComponentFlow",
+  step: [
+    {
+      i: {
+        ref: "component_ref01",
+        srcdatavar: "component_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "component01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-component_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicComponentFlow"
+}

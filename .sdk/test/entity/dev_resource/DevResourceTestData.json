@@ -1,0 +1,75 @@
+{
+  "existing": {
+    "dev_resource": {
+      "DEV_RESOURCE00": {
+        "dev_resources": [],
+        "errors": [],
+        "file_key": "s5c",
+        "id": "DEV_RESOURCE00",
+        "links_created": [],
+        "links_updated": [],
+        "name": "s60",
+        "node_id": "NODE01",
+        "url": "s62"
+      },
+      "DEV_RESOURCE01": {
+        "dev_resources": [],
+        "errors": [],
+        "file_key": "sb6",
+        "id": "DEV_RESOURCE01",
+        "links_created": [],
+        "links_updated": [],
+        "name": "sba",
+        "node_id": "NODE01",
+        "url": "sbc"
+      },
+      "DEV_RESOURCE02": {
+        "dev_resources": [],
+        "errors": [],
+        "file_key": "s110",
+        "id": "DEV_RESOURCE02",
+        "links_created": [],
+        "links_updated": [],
+        "name": "s114",
+        "node_id": "NODE01",
+        "url": "s116"
+      }
+    }
+  },
+  "new": {
+    "dev_resource": {
+      "dev_resource_ref01": {
+        "dev_resources": [],
+        "errors": [],
+        "file_key": "s16a",
+        "links_created": [],
+        "links_updated": [],
+        "name": "s16e",
+        "node_id": "NODE01",
+        "url": "s170"
+      }
+    }
+  },
+  "requests": {
+    "POST /v1/dev_resources": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v1/files/{file_key}/dev_resources": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v1/files/{file_key}/dev_resources/{dev_resource_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /v1/dev_resources": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

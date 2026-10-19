@@ -1,0 +1,312 @@
+# Entity: comment
+
+main: kit: entity: comment: {
+
+  alias: field: {}
+
+  fields: {
+    client_meta: {
+      h: "Client Meta"
+      n: "client_meta"
+      op: {
+        create: {
+          req: false
+          type: "`$ANY`"
+        }
+      }
+      r: true
+      sh: "Positioning information of the comment."
+      t: "`$ANY`"
+      union: {
+        branches: 4
+        count: 1
+        depth: 0
+      }
+    }
+    comment_id: {
+      h: "Comment Id"
+      n: "comment_id"
+      r: false
+      sh: "The ID of the comment to reply to, if any."
+      t: "`$STRING`"
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: true
+      sh: "The UTC ISO 8601 time at which the comment was left"
+      t: "`$STRING`"
+    }
+    file_key: {
+      h: "File Key"
+      n: "file_key"
+      r: true
+      sh: "The file in which the comment lives"
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      sh: "Unique identifier for comment."
+      t: "`$STRING`"
+    }
+    message: {
+      h: "Message"
+      n: "message"
+      r: true
+      sh: "The content of the comment"
+      t: "`$STRING`"
+    }
+    order_id: {
+      h: "Order Id"
+      n: "order_id"
+      r: true
+      sh: "Only set for top level comments."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    parent_id: {
+      h: "Parent Id"
+      n: "parent_id"
+      r: false
+      sh: "If present, the id of the comment to which this is the reply"
+      t: "`$STRING`"
+    }
+    reactions: {
+      h: "Reactions"
+      n: "reactions"
+      r: true
+      sh: "An array of reactions to the comment"
+      t: "`$ARRAY`"
+    }
+    resolved_at: {
+      fo: "date-time"
+      h: "Resolved At"
+      n: "resolved_at"
+      r: false
+      sh: "If set, the UTC ISO 8601 time the comment was resolved"
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    user: {
+      h: "User"
+      n: "user"
+      r: true
+      sh: "The user who left the comment"
+      t: "`$OBJECT`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "comment"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "client_meta"
+            "comment_id"
+            "message"
+          ]
+          co: {
+            id: "POST /v1/files/{file_key}/comments"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "file_key"
+                or: "file_key"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/files/{file_key}/comments"
+          q: {
+            exist: [
+              "file_key"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "files"
+            }
+            {
+              var: "file_key"
+            }
+            {
+              lit: "comments"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v1/files/{file_key}/comments"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "file_key"
+                or: "file_key"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "as_md"
+                or: "as_md"
+                r: false
+                t: "`$BOOLEAN`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v1/files/{file_key}/comments"
+          q: {
+            exist: [
+              "file_key"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "files"
+            }
+            {
+              var: "file_key"
+            }
+            {
+              lit: "comments"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.comments`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /v1/files/{file_key}/comments/{comment_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "file_key"
+                or: "file_key"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "comment_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v1/files/{file_key}/comments/{comment_id}"
+          q: {
+            exist: [
+              "file_key"
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              comment_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "files"
+            }
+            {
+              var: "file_key"
+            }
+            {
+              lit: "comments"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.file")]
+  ]
+
+}

@@ -1,0 +1,287 @@
+# Entity: component
+
+main: kit: entity: component: {
+
+  alias: field: {}
+
+  fields: {
+    components: {
+      h: "Components"
+      n: "components"
+      r: true
+      t: "`$ARRAY`"
+    }
+    containing_frame: {
+      h: "Containing Frame"
+      n: "containing_frame"
+      r: true
+      sh: "The containing frame of the component."
+      t: "`$OBJECT`"
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: true
+      sh: "The UTC ISO 8601 time when the component was created."
+      t: "`$STRING`"
+    }
+    cursor: {
+      h: "Cursor"
+      n: "cursor"
+      r: false
+      sh: "Pagination cursor"
+      t: "`$OBJECT`"
+    }
+    description: {
+      h: "Description"
+      n: "description"
+      r: true
+      sh: "The description of the component as entered by the publisher."
+      t: "`$STRING`"
+    }
+    file_key: {
+      h: "File Key"
+      n: "file_key"
+      r: true
+      sh: "The unique identifier of the Figma file that contains the component."
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    key: {
+      h: "Key"
+      n: "key"
+      r: true
+      sh: "The unique identifier for the component."
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: true
+      sh: "The name of the component."
+      t: "`$STRING`"
+    }
+    node_id: {
+      h: "Node Id"
+      n: "node_id"
+      r: true
+      sh: "The unique identifier of the component node within the Figma file."
+      t: "`$STRING`"
+    }
+    thumbnail_url: {
+      h: "Thumbnail Url"
+      n: "thumbnail_url"
+      r: false
+      sh: "A URL to a thumbnail image of the component."
+      t: "`$STRING`"
+    }
+    updated_at: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updated_at"
+      r: true
+      sh: "The UTC ISO 8601 time when the component was last updated."
+      t: "`$STRING`"
+    }
+    user: {
+      h: "User"
+      n: "user"
+      r: true
+      sh: "The user who last updated the component."
+      t: "`$OBJECT`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "component"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v1/files/{file_key}/components"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "file_key"
+                or: "file_key"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v1/files/{file_key}/components"
+          q: {
+            exist: [
+              "file_key"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "files"
+            }
+            {
+              var: "file_key"
+            }
+            {
+              lit: "components"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.meta`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v1/components/{key}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "key"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v1/components/{key}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              key: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "components"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.meta`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v1/teams/{team_id}/components"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "team_id"
+                or: "team_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "after"
+                or: "after"
+                r: false
+                t: "`$NUMBER`"
+              }
+              {
+                k: "query"
+                n: "before"
+                or: "before"
+                r: false
+                t: "`$NUMBER`"
+              }
+              {
+                ex: 30
+                k: "query"
+                n: "page_size"
+                or: "page_size"
+                r: false
+                t: "`$NUMBER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v1/teams/{team_id}/components"
+          q: {
+            exist: [
+              "team_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "teams"
+            }
+            {
+              var: "team_id"
+            }
+            {
+              lit: "components"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.meta`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.file")]
+  ]
+
+}

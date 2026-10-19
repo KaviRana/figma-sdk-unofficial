@@ -1,0 +1,68 @@
+{
+  "existing": {
+    "library_analytics": {
+      "LIBRARY_ANALYTICS00": {
+        "cursor": "s1e",
+        "next_page": false,
+        "rows": "s20",
+        "library_id": "LIBRARY01",
+        "id": "LIBRARY_ANALYTICS00"
+      },
+      "LIBRARY_ANALYTICS01": {
+        "cursor": "s3c",
+        "next_page": false,
+        "rows": "s3e",
+        "library_id": "LIBRARY01",
+        "id": "LIBRARY_ANALYTICS01"
+      },
+      "LIBRARY_ANALYTICS02": {
+        "cursor": "s5a",
+        "next_page": false,
+        "rows": "s5c",
+        "library_id": "LIBRARY01",
+        "id": "LIBRARY_ANALYTICS02"
+      }
+    }
+  },
+  "new": {
+    "library_analytics": {
+      "library_analytics_ref01": {
+        "cursor": "s78",
+        "next_page": false,
+        "rows": "s7a"
+      }
+    }
+  },
+  "requests": {
+    "GET /v1/analytics/libraries/{file_key}/component/actions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v1/analytics/libraries/{file_key}/component/usages": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v1/analytics/libraries/{file_key}/style/actions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v1/analytics/libraries/{file_key}/style/usages": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v1/analytics/libraries/{file_key}/variable/actions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v1/analytics/libraries/{file_key}/variable/usages": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

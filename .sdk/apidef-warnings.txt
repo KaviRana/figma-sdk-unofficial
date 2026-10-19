@@ -1,0 +1,15 @@
+{
+  point: "warning"
+  note: "Points GET /v1/analytics/libraries/{file_key}/component/actions, GET /v1/analytics/libraries/{file_key}/component/usages, GET /v1/analytics/libraries/{file_key}/style/actions, GET /v1/analytics/libraries/{file_key}/style/usages, GET /v1/analytics/libraries/{file_key}/variable/actions and GET /v1/analytics/libraries/{file_key}/variable/usages on entity=library_analytics op=load have the same selector (exist: group_by,library_id), so only GET /v1/analytics/libraries/{file_key}/component/actions is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "library_analytics"
+  op: "load"
+  points: [
+    "GET /v1/analytics/libraries/{file_key}/component/actions"
+    "GET /v1/analytics/libraries/{file_key}/component/usages"
+    "GET /v1/analytics/libraries/{file_key}/style/actions"
+    "GET /v1/analytics/libraries/{file_key}/style/usages"
+    "GET /v1/analytics/libraries/{file_key}/variable/actions"
+    "GET /v1/analytics/libraries/{file_key}/variable/usages"
+  ]
+
+}

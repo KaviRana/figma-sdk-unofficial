@@ -1,0 +1,96 @@
+# Entity: ai_usage
+
+main: kit: entity: ai_usage: {
+
+  alias: field: {}
+
+  name: "ai_usage"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v1/ai_usage/daily"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "cursor"
+                or: "cursor"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "end_date"
+                or: "end_date"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: 1000
+                k: "query"
+                n: "limit"
+                or: "limit"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "start_date"
+                or: "start_date"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "user_email"
+                or: "user_email"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v1/ai_usage/daily"
+          q: {
+            "$action": "daily"
+            exist: [
+              "end_date"
+              "start_date"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "ai_usage"
+            }
+            {
+              lit: "daily"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.rows`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

@@ -1,0 +1,72 @@
+# BasicCommentFlow
+
+main: kit: flow: BasicCommentFlow:
+{
+  entity: "comment",
+  kind: "basic",
+  name: "BasicCommentFlow",
+  step: [
+    {
+      i: {
+        ref: "comment_ref01"
+      }
+
+      m: {
+        file_key: "file_key01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        file_key: "file_key01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "comment_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "comment_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        file_key: "file_key01",
+        id: "comment01"
+      }
+
+      o: "remove"
+    }
+
+    {
+      i: {
+        suffix: "_rt0"
+      }
+
+      m: {
+        file_key: "file_key01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "comment_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicCommentFlow"
+}

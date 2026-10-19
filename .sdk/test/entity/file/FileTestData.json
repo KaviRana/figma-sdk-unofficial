@@ -1,0 +1,120 @@
+{
+  "existing": {
+    "file": {
+      "FILE00": {
+        "branches": [],
+        "componentSets": {},
+        "components": {},
+        "document": "sad",
+        "editorType": "sae",
+        "err": "saf",
+        "id": "FILE00",
+        "images": {},
+        "lastModified": "sb2",
+        "linkAccess": "sb3",
+        "mainFileKey": "sb4",
+        "name": "sb5",
+        "role": "sb6",
+        "schemaVersion": 183,
+        "styles": {},
+        "thumbnailUrl": "sb9",
+        "version": "sba",
+        "file_key": "FILE_KEY01"
+      },
+      "FILE01": {
+        "branches": [],
+        "componentSets": {},
+        "components": {},
+        "document": "s157",
+        "editorType": "s158",
+        "err": "s159",
+        "id": "FILE01",
+        "images": {},
+        "lastModified": "s15c",
+        "linkAccess": "s15d",
+        "mainFileKey": "s15e",
+        "name": "s15f",
+        "role": "s160",
+        "schemaVersion": 353,
+        "styles": {},
+        "thumbnailUrl": "s163",
+        "version": "s164",
+        "file_key": "FILE_KEY01"
+      },
+      "FILE02": {
+        "branches": [],
+        "componentSets": {},
+        "components": {},
+        "document": "s201",
+        "editorType": "s202",
+        "err": "s203",
+        "id": "FILE02",
+        "images": {},
+        "lastModified": "s206",
+        "linkAccess": "s207",
+        "mainFileKey": "s208",
+        "name": "s209",
+        "role": "s20a",
+        "schemaVersion": 523,
+        "styles": {},
+        "thumbnailUrl": "s20d",
+        "version": "s20e",
+        "file_key": "FILE_KEY01"
+      }
+    }
+  },
+  "new": {
+    "file": {
+      "file_ref01": {
+        "branches": [],
+        "componentSets": {},
+        "components": {},
+        "document": "s2ab",
+        "editorType": "s2ac",
+        "err": "s2ad",
+        "images": {},
+        "lastModified": "s2b0",
+        "linkAccess": "s2b1",
+        "mainFileKey": "s2b2",
+        "name": "s2b3",
+        "role": "s2b4",
+        "schemaVersion": 693,
+        "styles": {},
+        "thumbnailUrl": "s2b7",
+        "version": "s2b8"
+      }
+    }
+  },
+  "requests": {
+    "GET /v1/files/{file_key}/versions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v1/files/{file_key}/nodes": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v1/images/{file_key}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v1/files/{file_key}/images": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v1/files/{file_key}/meta": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v1/files/{file_key}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,140 @@
+# Entity: developer_log
+
+main: kit: entity: developer_log: {
+
+  alias: field: {}
+
+  fields: {
+    cursor: {
+      h: "Cursor"
+      n: "cursor"
+      r: false
+      sh: "A cursor for pagination."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    date_range: {
+      h: "Date Range"
+      n: "date_range"
+      r: false
+      sh: "Filter by date range."
+      t: "`$STRING`"
+    }
+    event_source: {
+      h: "Event Source"
+      n: "event_source"
+      r: false
+      sh: "Filter by event source."
+      t: "`$STRING`"
+    }
+    has_more: {
+      h: "Has More"
+      n: "has_more"
+      r: true
+      sh: "Whether there are more results available after this page."
+      t: "`$BOOLEAN`"
+    }
+    ip_address: {
+      h: "Ip Address"
+      n: "ip_address"
+      r: false
+      sh: "Filter by IP address prefix(es)."
+      t: "`$STRING`"
+    }
+    items: {
+      h: "Items"
+      n: "items"
+      r: true
+      sh: "An array of developer log entries sorted by timestamp in descending order."
+      t: "`$ARRAY`"
+    }
+    limit: {
+      h: "Limit"
+      n: "limit"
+      r: false
+      sh: "Maximum number of entries to return."
+      t: "`$INTEGER`"
+    }
+    token: {
+      h: "Token"
+      n: "token"
+      r: false
+      sh: "Filter by token value(s)."
+      t: "`$STRING`"
+    }
+    token_name: {
+      h: "Token Name"
+      n: "token_name"
+      r: false
+      sh: "Filter by token name prefix(es)."
+      t: "`$STRING`"
+    }
+    token_type: {
+      h: "Token Type"
+      n: "token_type"
+      r: false
+      sh: "Filter by the type of token used for authentication."
+      t: "`$STRING`"
+    }
+    user_email: {
+      h: "User Email"
+      n: "user_email"
+      r: false
+      sh: "Filter by user email prefix(es)."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "developer_log"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "cursor"
+            "date_range"
+            "event_source"
+            "ip_address"
+            "limit"
+            "token"
+            "token_name"
+            "token_type"
+            "user_email"
+          ]
+          co: {
+            id: "POST /v1/developer_logs"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/developer_logs"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "developer_logs"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.meta`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

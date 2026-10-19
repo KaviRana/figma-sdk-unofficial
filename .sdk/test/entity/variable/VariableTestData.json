@@ -1,0 +1,61 @@
+{
+  "existing": {
+    "variable": {
+      "VARIABLE00": {
+        "tempIdToRealId": {},
+        "variableCollections": [],
+        "variableModeValues": [],
+        "variableModes": [],
+        "variables": [],
+        "file_key": "FILE_KEY01",
+        "id": "VARIABLE00"
+      },
+      "VARIABLE01": {
+        "tempIdToRealId": {},
+        "variableCollections": [],
+        "variableModeValues": [],
+        "variableModes": [],
+        "variables": [],
+        "file_key": "FILE_KEY01",
+        "id": "VARIABLE01"
+      },
+      "VARIABLE02": {
+        "tempIdToRealId": {},
+        "variableCollections": [],
+        "variableModeValues": [],
+        "variableModes": [],
+        "variables": [],
+        "file_key": "FILE_KEY01",
+        "id": "VARIABLE02"
+      }
+    }
+  },
+  "new": {
+    "variable": {
+      "variable_ref01": {
+        "tempIdToRealId": {},
+        "variableCollections": [],
+        "variableModeValues": [],
+        "variableModes": [],
+        "variables": []
+      }
+    }
+  },
+  "requests": {
+    "POST /v1/files/{file_key}/variables": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v1/files/{file_key}/variables/local": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v1/files/{file_key}/variables/published": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

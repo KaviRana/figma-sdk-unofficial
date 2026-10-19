@@ -1,0 +1,107 @@
+# Entity: activity_log
+
+main: kit: entity: activity_log: {
+
+  alias: field: {}
+
+  fields: {
+    activity_logs: {
+      h: "Activity Logs"
+      n: "activity_logs"
+      r: false
+      sh: "An array of activity logs sorted by timestamp in ascending order by default."
+      t: "`$ARRAY`"
+    }
+    cursor: {
+      h: "Cursor"
+      n: "cursor"
+      r: false
+      sh: "Encodes the last event (the most recent event)"
+      t: "`$STRING`"
+    }
+    next_page: {
+      h: "Next Page"
+      n: "next_page"
+      r: false
+      sh: "Whether there is a next page of events"
+      t: "`$BOOLEAN`"
+    }
+  }
+
+  name: "activity_log"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v1/activity_logs"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "end_time"
+                or: "end_time"
+                r: false
+                t: "`$NUMBER`"
+              }
+              {
+                k: "query"
+                n: "event"
+                or: "events"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "limit"
+                or: "limit"
+                r: false
+                t: "`$NUMBER`"
+              }
+              {
+                ex: "asc"
+                k: "query"
+                n: "order"
+                or: "order"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "start_time"
+                or: "start_time"
+                r: false
+                t: "`$NUMBER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v1/activity_logs"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "activity_logs"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.meta`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

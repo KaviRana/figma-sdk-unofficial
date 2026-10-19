@@ -1,0 +1,40 @@
+{
+  "existing": {
+    "activity_log": {
+      "ACTIVITY_LOG00": {
+        "activity_logs": [],
+        "cursor": "s1f",
+        "next_page": true,
+        "id": "ACTIVITY_LOG00"
+      },
+      "ACTIVITY_LOG01": {
+        "activity_logs": [],
+        "cursor": "s3d",
+        "next_page": true,
+        "id": "ACTIVITY_LOG01"
+      },
+      "ACTIVITY_LOG02": {
+        "activity_logs": [],
+        "cursor": "s5b",
+        "next_page": true,
+        "id": "ACTIVITY_LOG02"
+      }
+    }
+  },
+  "new": {
+    "activity_log": {
+      "activity_log_ref01": {
+        "activity_logs": [],
+        "cursor": "s79",
+        "next_page": true
+      }
+    }
+  },
+  "requests": {
+    "GET /v1/activity_logs": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

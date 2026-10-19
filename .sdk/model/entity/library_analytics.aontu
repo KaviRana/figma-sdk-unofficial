@@ -1,0 +1,539 @@
+# Entity: library_analytics
+
+main: kit: entity: library_analytics: {
+
+  alias: field: {}
+
+  fields: {
+    cursor: {
+      h: "Cursor"
+      n: "cursor"
+      r: false
+      sh: "The cursor to use to fetch the next page of data."
+      t: "`$STRING`"
+    }
+    next_page: {
+      h: "Next Page"
+      n: "next_page"
+      r: true
+      sh: "Whether there is a next page of data that can be fetched."
+      t: "`$BOOLEAN`"
+    }
+    rows: {
+      h: "Rows"
+      n: "rows"
+      r: true
+      sh: "An array of analytics data."
+      t: "`$ANY`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 0
+      }
+    }
+  }
+
+  name: "library_analytics"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v1/analytics/libraries/{file_key}/component/actions"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "library_id"
+                or: "file_key"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "cursor"
+                or: "cursor"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "end_date"
+                or: "end_date"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "group_by"
+                or: "group_by"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "start_date"
+                or: "start_date"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v1/analytics/libraries/{file_key}/component/actions"
+          q: {
+            exist: [
+              "group_by"
+              "library_id"
+            ]
+          }
+          r: {
+            param: {
+              file_key: "library_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "analytics"
+            }
+            {
+              lit: "libraries"
+            }
+            {
+              var: "library_id"
+            }
+            {
+              lit: "component"
+            }
+            {
+              lit: "actions"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v1/analytics/libraries/{file_key}/component/usages"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "library_id"
+                or: "file_key"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "cursor"
+                or: "cursor"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "group_by"
+                or: "group_by"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v1/analytics/libraries/{file_key}/component/usages"
+          q: {
+            exist: [
+              "group_by"
+              "library_id"
+            ]
+          }
+          r: {
+            param: {
+              file_key: "library_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "analytics"
+            }
+            {
+              lit: "libraries"
+            }
+            {
+              var: "library_id"
+            }
+            {
+              lit: "component"
+            }
+            {
+              lit: "usages"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v1/analytics/libraries/{file_key}/style/actions"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "library_id"
+                or: "file_key"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "cursor"
+                or: "cursor"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "end_date"
+                or: "end_date"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "group_by"
+                or: "group_by"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "start_date"
+                or: "start_date"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v1/analytics/libraries/{file_key}/style/actions"
+          q: {
+            exist: [
+              "group_by"
+              "library_id"
+            ]
+          }
+          r: {
+            param: {
+              file_key: "library_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "analytics"
+            }
+            {
+              lit: "libraries"
+            }
+            {
+              var: "library_id"
+            }
+            {
+              lit: "style"
+            }
+            {
+              lit: "actions"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v1/analytics/libraries/{file_key}/style/usages"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "library_id"
+                or: "file_key"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "cursor"
+                or: "cursor"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "group_by"
+                or: "group_by"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v1/analytics/libraries/{file_key}/style/usages"
+          q: {
+            exist: [
+              "group_by"
+              "library_id"
+            ]
+          }
+          r: {
+            param: {
+              file_key: "library_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "analytics"
+            }
+            {
+              lit: "libraries"
+            }
+            {
+              var: "library_id"
+            }
+            {
+              lit: "style"
+            }
+            {
+              lit: "usages"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v1/analytics/libraries/{file_key}/variable/actions"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "library_id"
+                or: "file_key"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "cursor"
+                or: "cursor"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "end_date"
+                or: "end_date"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "group_by"
+                or: "group_by"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "start_date"
+                or: "start_date"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v1/analytics/libraries/{file_key}/variable/actions"
+          q: {
+            exist: [
+              "group_by"
+              "library_id"
+            ]
+          }
+          r: {
+            param: {
+              file_key: "library_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "analytics"
+            }
+            {
+              lit: "libraries"
+            }
+            {
+              var: "library_id"
+            }
+            {
+              lit: "variable"
+            }
+            {
+              lit: "actions"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v1/analytics/libraries/{file_key}/variable/usages"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "library_id"
+                or: "file_key"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "cursor"
+                or: "cursor"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "group_by"
+                or: "group_by"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v1/analytics/libraries/{file_key}/variable/usages"
+          q: {
+            exist: [
+              "group_by"
+              "library_id"
+            ]
+          }
+          r: {
+            param: {
+              file_key: "library_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "analytics"
+            }
+            {
+              lit: "libraries"
+            }
+            {
+              var: "library_id"
+            }
+            {
+              lit: "variable"
+            }
+            {
+              lit: "usages"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

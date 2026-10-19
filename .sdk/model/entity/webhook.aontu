@@ -1,0 +1,508 @@
+# Entity: webhook
+
+main: kit: entity: webhook: {
+
+  alias: field: {}
+
+  fields: {
+    client_id: {
+      h: "Client Id"
+      n: "client_id"
+      r: true
+      sh: "The client ID of the OAuth application that registered this webhook, if any"
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    context: {
+      h: "Context"
+      n: "context"
+      r: true
+      sh: "The type of context this webhook is attached to."
+      t: "`$STRING`"
+    }
+    context_id: {
+      h: "Context Id"
+      n: "context_id"
+      r: true
+      sh: "The ID of the context this webhook is attached to"
+      t: "`$STRING`"
+    }
+    description: {
+      h: "Description"
+      n: "description"
+      op: {
+        create: {
+          req: false
+          type: "`$STRING`"
+        }
+        update: {
+          req: false
+          type: "`$STRING`"
+        }
+      }
+      r: true
+      sh: "Optional user-provided description or name for the webhook."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    endpoint: {
+      h: "Endpoint"
+      n: "endpoint"
+      r: true
+      sh: "The endpoint that will be hit when the webhook is triggered"
+      t: "`$STRING`"
+    }
+    event_type: {
+      h: "Event Type"
+      n: "event_type"
+      r: true
+      sh: "The event this webhook triggers on"
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      sh: "The ID of the webhook"
+      t: "`$STRING`"
+    }
+    passcode: {
+      h: "Passcode"
+      n: "passcode"
+      r: true
+      sh: "The passcode that will be passed back to the webhook endpoint."
+      t: "`$STRING`"
+    }
+    plan_api_id: {
+      h: "Plan Api Id"
+      n: "plan_api_id"
+      r: true
+      sh: "The plan API ID of the team or organization where this webhook was created"
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      op: {
+        create: {
+          req: false
+          type: "`$STRING`"
+        }
+        update: {
+          req: false
+          type: "`$STRING`"
+        }
+      }
+      r: true
+      sh: "The current status of the webhook"
+      t: "`$STRING`"
+    }
+    team_id: {
+      de: true
+      h: "Team Id"
+      n: "team_id"
+      op: {
+        create: {
+          req: false
+          type: "`$STRING`"
+        }
+      }
+      r: true
+      sh: "The team id you are subscribed to for updates."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "webhook"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "context"
+            "context_id"
+            "description"
+            "endpoint"
+            "event_type"
+            "passcode"
+            "status"
+            "team_id"
+          ]
+          co: {
+            id: "POST /v2/webhooks"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v2/webhooks"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "webhooks"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/webhooks/{webhook_id}/requests"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "webhook_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/webhooks/{webhook_id}/requests"
+          q: {
+            "$action": "request"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              webhook_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "webhooks"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "requests"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.requests`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/teams/{team_id}/webhooks"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "team_id"
+                or: "team_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/teams/{team_id}/webhooks"
+          q: {
+            exist: [
+              "team_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "teams"
+            }
+            {
+              var: "team_id"
+            }
+            {
+              lit: "webhooks"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.webhooks`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/webhooks"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "context"
+                or: "context"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "context_id"
+                or: "context_id"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "cursor"
+                or: "cursor"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "plan_api_id"
+                or: "plan_api_id"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/webhooks"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "webhooks"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.webhooks`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/webhooks/{webhook_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "webhook_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/webhooks/{webhook_id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              webhook_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "webhooks"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /v2/webhooks/{webhook_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "webhook_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v2/webhooks/{webhook_id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              webhook_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "webhooks"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          bf: [
+            "description"
+            "endpoint"
+            "event_type"
+            "passcode"
+            "status"
+          ]
+          co: {
+            id: "PUT /v2/webhooks/{webhook_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "webhook_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/v2/webhooks/{webhook_id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              webhook_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "webhooks"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

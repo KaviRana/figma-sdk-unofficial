@@ -1,0 +1,21 @@
+{
+  "existing": {
+    "ai_usage": {
+      "AI_USAGE00": {},
+      "AI_USAGE01": {},
+      "AI_USAGE02": {}
+    }
+  },
+  "new": {
+    "ai_usage": {
+      "ai_usage_ref01": {}
+    }
+  },
+  "requests": {
+    "GET /v1/ai_usage/daily": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

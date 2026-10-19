@@ -1,0 +1,288 @@
+# Entity: folder
+
+main: kit: entity: folder: {
+
+  alias: field: {}
+
+  fields: {
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: false
+      sh: "The time at which the folder was created."
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      sh: "The ID of the folder."
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: true
+      sh: "The name of the folder."
+      t: "`$STRING`"
+    }
+    parent_folder_id: {
+      h: "Parent Folder Id"
+      n: "parent_folder_id"
+      r: true
+      sh: "The ID of the folder's parent folder, or null if the folder is a top-level folder in the team."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    sharing_audience_control: {
+      h: "Sharing Audience Control"
+      n: "sharing_audience_control"
+      r: false
+      sh: "The audience that can access the folder."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "folder"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/folders/{folder_id}/files"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "folder_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: false
+                k: "query"
+                n: "branch_data"
+                or: "branch_data"
+                r: false
+                t: "`$BOOLEAN`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/folders/{folder_id}/files"
+          q: {
+            "$action": "file"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              folder_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "folders"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "files"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.files`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/folders/{folder_id}/folders"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "folder_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/folders/{folder_id}/folders"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              folder_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "folders"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "folders"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.folders`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/teams/{team_id}/folders"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "team_id"
+                or: "team_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/teams/{team_id}/folders"
+          q: {
+            exist: [
+              "team_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "teams"
+            }
+            {
+              var: "team_id"
+            }
+            {
+              lit: "folders"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.folders`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/folders/{folder_id}/meta"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "folder_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/folders/{folder_id}/meta"
+          q: {
+            "$action": "meta"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              folder_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "folders"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "meta"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

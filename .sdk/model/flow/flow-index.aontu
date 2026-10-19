@@ -1,2 +1,20 @@
-# Operational Flows
+# Flows
 
+@"./BasicActivityLogFlow.aontu"
+@"./BasicAiUsageFlow.aontu"
+@"./BasicCommentFlow.aontu"
+@"./BasicCommentReactionFlow.aontu"
+@"./BasicComponentFlow.aontu"
+@"./BasicComponentSetFlow.aontu"
+@"./BasicDevResourceFlow.aontu"
+@"./BasicDeveloperLogFlow.aontu"
+@"./BasicFileFlow.aontu"
+@"./BasicFolderFlow.aontu"
+@"./BasicLibraryAnalyticsFlow.aontu"
+@"./BasicOEmbedFlow.aontu"
+@"./BasicPaymentFlow.aontu"
+@"./BasicProjectFlow.aontu"
+@"./BasicStyleFlow.aontu"
+@"./BasicUserFlow.aontu"
+@"./BasicVariableFlow.aontu"
+@"./BasicWebhookFlow.aontu"

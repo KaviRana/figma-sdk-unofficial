@@ -1,0 +1,98 @@
+{
+  "existing": {
+    "webhook": {
+      "WEBHOOK00": {
+        "client_id": "CLIENT01",
+        "context": "s6f",
+        "context_id": "CONTEXT01",
+        "description": "s71",
+        "endpoint": "s72",
+        "event_type": "s73",
+        "id": "WEBHOOK00",
+        "passcode": "s75",
+        "plan_api_id": "PLAN_API01",
+        "status": "s77",
+        "team_id": "TEAM01"
+      },
+      "WEBHOOK01": {
+        "client_id": "CLIENT01",
+        "context": "sdd",
+        "context_id": "CONTEXT01",
+        "description": "sdf",
+        "endpoint": "se0",
+        "event_type": "se1",
+        "id": "WEBHOOK01",
+        "passcode": "se3",
+        "plan_api_id": "PLAN_API01",
+        "status": "se5",
+        "team_id": "TEAM01"
+      },
+      "WEBHOOK02": {
+        "client_id": "CLIENT01",
+        "context": "s14b",
+        "context_id": "CONTEXT01",
+        "description": "s14d",
+        "endpoint": "s14e",
+        "event_type": "s14f",
+        "id": "WEBHOOK02",
+        "passcode": "s151",
+        "plan_api_id": "PLAN_API01",
+        "status": "s153",
+        "team_id": "TEAM01"
+      }
+    }
+  },
+  "new": {
+    "webhook": {
+      "webhook_ref01": {
+        "client_id": "CLIENT01",
+        "context": "s1b9",
+        "context_id": "CONTEXT01",
+        "description": "s1bb",
+        "endpoint": "s1bc",
+        "event_type": "s1bd",
+        "passcode": "s1bf",
+        "plan_api_id": "PLAN_API01",
+        "status": "s1c1",
+        "team_id": "TEAM01"
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/webhooks": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/webhooks/{webhook_id}/requests": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/teams/{team_id}/webhooks": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/webhooks": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/webhooks/{webhook_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/webhooks/{webhook_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /v2/webhooks/{webhook_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

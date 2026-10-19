@@ -1,0 +1,61 @@
+{
+  "existing": {
+    "comment_reaction": {
+      "COMMENT_REACTION00": {
+        "created_at": "s3c",
+        "emoji": "s3d",
+        "error": true,
+        "id": "COMMENT_REACTION00",
+        "status": 64,
+        "user": {},
+        "file_id": "FILE01"
+      },
+      "COMMENT_REACTION01": {
+        "created_at": "s78",
+        "emoji": "s79",
+        "error": true,
+        "id": "COMMENT_REACTION01",
+        "status": 124,
+        "user": {},
+        "file_id": "FILE01"
+      },
+      "COMMENT_REACTION02": {
+        "created_at": "sb4",
+        "emoji": "sb5",
+        "error": true,
+        "id": "COMMENT_REACTION02",
+        "status": 184,
+        "user": {},
+        "file_id": "FILE01"
+      }
+    }
+  },
+  "new": {
+    "comment_reaction": {
+      "comment_reaction_ref01": {
+        "created_at": "sf0",
+        "emoji": "sf1",
+        "error": true,
+        "status": 244,
+        "user": {}
+      }
+    }
+  },
+  "requests": {
+    "POST /v1/files/{file_key}/comments/{comment_id}/reactions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v1/files/{file_key}/comments/{comment_id}/reactions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v1/files/{file_key}/comments/{comment_id}/reactions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

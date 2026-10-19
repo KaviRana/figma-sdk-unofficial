@@ -1,0 +1,18 @@
+# BasicDeveloperLogFlow
+
+main: kit: flow: BasicDeveloperLogFlow:
+{
+  entity: "developer_log",
+  kind: "basic",
+  name: "BasicDeveloperLogFlow",
+  step: [
+    {
+      i: {
+        ref: "developer_log_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicDeveloperLogFlow"
+}

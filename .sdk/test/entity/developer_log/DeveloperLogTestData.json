@@ -1,0 +1,72 @@
+{
+  "existing": {
+    "developer_log": {
+      "DEVELOPER_LOG00": {
+        "cursor": "s6e",
+        "date_range": "s6f",
+        "event_source": "s70",
+        "has_more": false,
+        "ip_address": "s72",
+        "items": [],
+        "limit": 116,
+        "token": "s75",
+        "token_name": "s76",
+        "token_type": "s77",
+        "user_email": "s78",
+        "id": "DEVELOPER_LOG00"
+      },
+      "DEVELOPER_LOG01": {
+        "cursor": "sdc",
+        "date_range": "sdd",
+        "event_source": "sde",
+        "has_more": false,
+        "ip_address": "se0",
+        "items": [],
+        "limit": 226,
+        "token": "se3",
+        "token_name": "se4",
+        "token_type": "se5",
+        "user_email": "se6",
+        "id": "DEVELOPER_LOG01"
+      },
+      "DEVELOPER_LOG02": {
+        "cursor": "s14a",
+        "date_range": "s14b",
+        "event_source": "s14c",
+        "has_more": false,
+        "ip_address": "s14e",
+        "items": [],
+        "limit": 336,
+        "token": "s151",
+        "token_name": "s152",
+        "token_type": "s153",
+        "user_email": "s154",
+        "id": "DEVELOPER_LOG02"
+      }
+    }
+  },
+  "new": {
+    "developer_log": {
+      "developer_log_ref01": {
+        "cursor": "s1b8",
+        "date_range": "s1b9",
+        "event_source": "s1ba",
+        "has_more": false,
+        "ip_address": "s1bc",
+        "items": [],
+        "limit": 446,
+        "token": "s1bf",
+        "token_name": "s1c0",
+        "token_type": "s1c1",
+        "user_email": "s1c2"
+      }
+    }
+  },
+  "requests": {
+    "POST /v1/developer_logs": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,294 @@
+# Entity: style
+
+main: kit: entity: style: {
+
+  alias: field: {}
+
+  fields: {
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: true
+      sh: "The UTC ISO 8601 time when the style was created."
+      t: "`$STRING`"
+    }
+    cursor: {
+      h: "Cursor"
+      n: "cursor"
+      r: false
+      sh: "Pagination cursor"
+      t: "`$OBJECT`"
+    }
+    description: {
+      h: "Description"
+      n: "description"
+      r: true
+      sh: "The description of the style as entered by the publisher."
+      t: "`$STRING`"
+    }
+    file_key: {
+      h: "File Key"
+      n: "file_key"
+      r: true
+      sh: "The unique identifier of the Figma file that contains the style."
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    key: {
+      h: "Key"
+      n: "key"
+      r: true
+      sh: "The unique identifier for the style"
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: true
+      sh: "The name of the style."
+      t: "`$STRING`"
+    }
+    node_id: {
+      h: "Node Id"
+      n: "node_id"
+      r: true
+      sh: "ID of the style node within the figma file"
+      t: "`$STRING`"
+    }
+    sort_position: {
+      h: "Sort Position"
+      n: "sort_position"
+      r: true
+      sh: "A user specified order number by which the style can be sorted."
+      t: "`$STRING`"
+    }
+    style_type: {
+      h: "Style Type"
+      n: "style_type"
+      r: true
+      sh: "The type of style"
+      t: "`$STRING`"
+    }
+    styles: {
+      h: "Styles"
+      n: "styles"
+      r: true
+      t: "`$ARRAY`"
+    }
+    thumbnail_url: {
+      h: "Thumbnail Url"
+      n: "thumbnail_url"
+      r: false
+      sh: "A URL to a thumbnail image of the style."
+      t: "`$STRING`"
+    }
+    updated_at: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updated_at"
+      r: true
+      sh: "The UTC ISO 8601 time when the style was last updated."
+      t: "`$STRING`"
+    }
+    user: {
+      h: "User"
+      n: "user"
+      r: true
+      sh: "The user who last updated the style."
+      t: "`$OBJECT`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "style"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v1/files/{file_key}/styles"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "file_key"
+                or: "file_key"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v1/files/{file_key}/styles"
+          q: {
+            exist: [
+              "file_key"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "files"
+            }
+            {
+              var: "file_key"
+            }
+            {
+              lit: "styles"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.meta`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v1/styles/{key}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "key"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v1/styles/{key}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              key: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "styles"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.meta`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v1/teams/{team_id}/styles"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "team_id"
+                or: "team_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "after"
+                or: "after"
+                r: false
+                t: "`$NUMBER`"
+              }
+              {
+                k: "query"
+                n: "before"
+                or: "before"
+                r: false
+                t: "`$NUMBER`"
+              }
+              {
+                ex: 30
+                k: "query"
+                n: "page_size"
+                or: "page_size"
+                r: false
+                t: "`$NUMBER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v1/teams/{team_id}/styles"
+          q: {
+            exist: [
+              "team_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "teams"
+            }
+            {
+              var: "team_id"
+            }
+            {
+              lit: "styles"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.meta`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.file")]
+  ]
+
+}

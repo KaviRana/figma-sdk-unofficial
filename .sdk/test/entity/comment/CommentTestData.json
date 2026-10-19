@@ -1,0 +1,78 @@
+{
+  "existing": {
+    "comment": {
+      "COMMENT00": {
+        "client_meta": "s6e",
+        "comment_id": "COMMENT01",
+        "created_at": "s70",
+        "file_key": "s71",
+        "id": "COMMENT00",
+        "message": "s73",
+        "order_id": "ORDER01",
+        "parent_id": "PARENT01",
+        "reactions": [],
+        "resolved_at": "s77",
+        "user": {}
+      },
+      "COMMENT01": {
+        "client_meta": "sdc",
+        "comment_id": "COMMENT01",
+        "created_at": "sde",
+        "file_key": "sdf",
+        "id": "COMMENT01",
+        "message": "se1",
+        "order_id": "ORDER01",
+        "parent_id": "PARENT01",
+        "reactions": [],
+        "resolved_at": "se5",
+        "user": {}
+      },
+      "COMMENT02": {
+        "client_meta": "s14a",
+        "comment_id": "COMMENT01",
+        "created_at": "s14c",
+        "file_key": "s14d",
+        "id": "COMMENT02",
+        "message": "s14f",
+        "order_id": "ORDER01",
+        "parent_id": "PARENT01",
+        "reactions": [],
+        "resolved_at": "s153",
+        "user": {}
+      }
+    }
+  },
+  "new": {
+    "comment": {
+      "comment_ref01": {
+        "client_meta": "s1b8",
+        "comment_id": "COMMENT01",
+        "created_at": "s1ba",
+        "file_key": "s1bb",
+        "message": "s1bd",
+        "order_id": "ORDER01",
+        "parent_id": "PARENT01",
+        "reactions": [],
+        "resolved_at": "s1c1",
+        "user": {}
+      }
+    }
+  },
+  "requests": {
+    "POST /v1/files/{file_key}/comments": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v1/files/{file_key}/comments": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v1/files/{file_key}/comments/{comment_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

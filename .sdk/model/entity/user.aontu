@@ -1,0 +1,79 @@
+# Entity: user
+
+main: kit: entity: user: {
+
+  alias: field: {}
+
+  fields: {
+    email: {
+      h: "Email"
+      n: "email"
+      r: true
+      sh: "Email associated with the user's account."
+      t: "`$STRING`"
+    }
+    handle: {
+      h: "Handle"
+      n: "handle"
+      r: true
+      sh: "Name of the user."
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      sh: "Unique stable id of the user."
+      t: "`$STRING`"
+    }
+    img_url: {
+      h: "Img Url"
+      n: "img_url"
+      r: true
+      sh: "URL link to the user's profile image."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "user"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v1/me"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/v1/me"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "me"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

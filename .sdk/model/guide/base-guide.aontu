@@ -1,0 +1,276 @@
+# Generated from the API definition and overwritten on every build: do not
+# edit this file. Put customizations in the guide entry file, which includes
+# this one and overrides its defaults:
+#   guide.aontu
+
+guide: {
+  metrics: count: entity: 18
+  metrics: count: path: 47
+  metrics: count: method: 54
+
+  entity: activity_log: {
+    path: "/v1/activity_logs": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.meta`")|top
+    }
+  }
+
+  entity: ai_usage: {
+    path: "/v1/ai_usage/daily": {
+      action: "daily": {}
+      op: list: method: *GET
+      op: list: transform: res: *("`body.rows`")|top
+    }
+  }
+
+  entity: comment: {
+    path: "/v1/files/{file_key}/comments": {
+      op: create: method: *POST
+      op: list: method: *GET
+      op: list: transform: res: *("`body.comments`")|top
+    }
+    path: "/v1/files/{file_key}/comments/{comment_id}": {
+      rename: param: "comment_id": *"id"
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: comment_reaction: {
+    path: "/v1/files/{file_key}/comments/{comment_id}/reactions": {
+      rename: param: "comment_id": *"id"
+      rename: param: "file_key": *"file_id"
+      op: create: method: *POST
+      op: list: method: *GET
+      op: list: transform: res: *("`body.reactions`")|top
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: component: {
+    path: "/v1/components/{key}": {
+      rename: param: "key": *"id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.meta`")|top
+    }
+    path: "/v1/files/{file_key}/components": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.meta`")|top
+    }
+    path: "/v1/teams/{team_id}/components": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.meta`")|top
+    }
+  }
+
+  entity: component_set: {
+    path: "/v1/component_sets/{key}": {
+      rename: param: "key": *"id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.meta`")|top
+    }
+    path: "/v1/files/{file_key}/component_sets": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.meta`")|top
+    }
+    path: "/v1/teams/{team_id}/component_sets": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.meta`")|top
+    }
+  }
+
+  entity: dev_resource: {
+    path: "/v1/dev_resources": {
+      op: create: method: *POST
+      op: update: method: *PUT
+    }
+    path: "/v1/files/{file_key}/dev_resources": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.dev_resources`")|top
+    }
+    path: "/v1/files/{file_key}/dev_resources/{dev_resource_id}": {
+      rename: param: "dev_resource_id": *"id"
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: developer_log: {
+    path: "/v1/developer_logs": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.meta`")|top
+    }
+  }
+
+  entity: file: {
+    path: "/v1/files/{file_key}": {
+      rename: param: "file_key": *"id"
+      op: load: method: *GET
+    }
+    path: "/v1/files/{file_key}/images": {
+      action: "image": {}
+      op: load: method: *GET
+      op: load: transform: res: *("`body.meta`")|top
+    }
+    path: "/v1/files/{file_key}/meta": {
+      action: "meta": {}
+      op: load: method: *GET
+      op: load: transform: res: *("`body.file`")|top
+    }
+    path: "/v1/files/{file_key}/nodes": {
+      action: "node": {}
+      op: load: method: *GET
+    }
+    path: "/v1/files/{file_key}/versions": {
+      action: "version": {}
+      op: list: method: *GET
+      op: list: transform: res: *("`body.versions`")|top
+    }
+    path: "/v1/images/{file_key}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: folder: {
+    path: "/v2/folders/{folder_id}/files": {
+      action: "file": {}
+      rename: param: "folder_id": *"id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.files`")|top
+    }
+    path: "/v2/folders/{folder_id}/folders": {
+      rename: param: "folder_id": *"id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.folders`")|top
+    }
+    path: "/v2/folders/{folder_id}/meta": {
+      action: "meta": {}
+      rename: param: "folder_id": *"id"
+      op: load: method: *GET
+    }
+    path: "/v2/teams/{team_id}/folders": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.folders`")|top
+    }
+  }
+
+  entity: library_analytics: {
+    path: "/v1/analytics/libraries/{file_key}/component/actions": {
+      rename: param: "file_key": *"library_id"
+      op: load: method: *GET
+    }
+    path: "/v1/analytics/libraries/{file_key}/component/usages": {
+      rename: param: "file_key": *"library_id"
+      op: load: method: *GET
+    }
+    path: "/v1/analytics/libraries/{file_key}/style/actions": {
+      rename: param: "file_key": *"library_id"
+      op: load: method: *GET
+    }
+    path: "/v1/analytics/libraries/{file_key}/style/usages": {
+      rename: param: "file_key": *"library_id"
+      op: load: method: *GET
+    }
+    path: "/v1/analytics/libraries/{file_key}/variable/actions": {
+      rename: param: "file_key": *"library_id"
+      op: load: method: *GET
+    }
+    path: "/v1/analytics/libraries/{file_key}/variable/usages": {
+      rename: param: "file_key": *"library_id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: o_embed: {
+    path: "/v1/oembed": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: payment: {
+    path: "/v1/payments": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.meta`")|top
+    }
+  }
+
+  entity: project: {
+    path: "/v1/projects/{project_id}/files": {
+      action: "file": {}
+      rename: param: "project_id": *"id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.files`")|top
+    }
+    path: "/v1/projects/{project_id}/meta": {
+      action: "meta": {}
+      rename: param: "project_id": *"id"
+      op: load: method: *GET
+    }
+    path: "/v1/teams/{team_id}/projects": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.projects`")|top
+    }
+  }
+
+  entity: style: {
+    path: "/v1/files/{file_key}/styles": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.meta`")|top
+    }
+    path: "/v1/styles/{key}": {
+      rename: param: "key": *"id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.meta`")|top
+    }
+    path: "/v1/teams/{team_id}/styles": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.meta`")|top
+    }
+  }
+
+  entity: user: {
+    path: "/v1/me": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: variable: {
+    path: "/v1/files/{file_key}/variables": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.meta`")|top
+    }
+    path: "/v1/files/{file_key}/variables/local": {
+      action: "local": {}
+      op: load: method: *GET
+      op: load: transform: res: *("`body.meta`")|top
+    }
+    path: "/v1/files/{file_key}/variables/published": {
+      action: "published": {}
+      op: load: method: *GET
+      op: load: transform: res: *("`body.meta`")|top
+    }
+  }
+
+  entity: webhook: {
+    path: "/v2/teams/{team_id}/webhooks": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.webhooks`")|top
+    }
+    path: "/v2/webhooks": {
+      op: create: method: *POST
+      op: list: method: *GET
+      op: list: transform: res: *("`body.webhooks`")|top
+    }
+    path: "/v2/webhooks/{webhook_id}": {
+      rename: param: "webhook_id": *"id"
+      op: load: method: *GET
+      op: remove: method: *DELETE
+      op: update: method: *PUT
+    }
+    path: "/v2/webhooks/{webhook_id}/requests": {
+      action: "request": {}
+      rename: param: "webhook_id": *"id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.requests`")|top
+    }
+  }
+
+}

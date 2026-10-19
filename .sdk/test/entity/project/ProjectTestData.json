@@ -1,0 +1,45 @@
+{
+  "existing": {
+    "project": {
+      "PROJECT00": {
+        "id": "PROJECT00",
+        "name": "s15",
+        "team_id": "TEAM01"
+      },
+      "PROJECT01": {
+        "id": "PROJECT01",
+        "name": "s29",
+        "team_id": "TEAM01"
+      },
+      "PROJECT02": {
+        "id": "PROJECT02",
+        "name": "s3d",
+        "team_id": "TEAM01"
+      }
+    }
+  },
+  "new": {
+    "project": {
+      "project_ref01": {
+        "name": "s51"
+      }
+    }
+  },
+  "requests": {
+    "GET /v1/projects/{project_id}/files": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v1/teams/{team_id}/projects": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v1/projects/{project_id}/meta": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

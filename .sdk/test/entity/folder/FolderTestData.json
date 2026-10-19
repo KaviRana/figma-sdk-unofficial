@@ -1,0 +1,62 @@
+{
+  "existing": {
+    "folder": {
+      "FOLDER00": {
+        "created_at": "s32",
+        "id": "FOLDER00",
+        "name": "s34",
+        "parent_folder_id": "PARENT_FOLDER01",
+        "sharing_audience_control": "s36",
+        "team_id": "TEAM01"
+      },
+      "FOLDER01": {
+        "created_at": "s64",
+        "id": "FOLDER01",
+        "name": "s66",
+        "parent_folder_id": "PARENT_FOLDER01",
+        "sharing_audience_control": "s68",
+        "team_id": "TEAM01"
+      },
+      "FOLDER02": {
+        "created_at": "s96",
+        "id": "FOLDER02",
+        "name": "s98",
+        "parent_folder_id": "PARENT_FOLDER01",
+        "sharing_audience_control": "s9a",
+        "team_id": "TEAM01"
+      }
+    }
+  },
+  "new": {
+    "folder": {
+      "folder_ref01": {
+        "created_at": "sc8",
+        "name": "sca",
+        "parent_folder_id": "PARENT_FOLDER01",
+        "sharing_audience_control": "scc"
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/folders/{folder_id}/files": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/folders/{folder_id}/folders": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/teams/{team_id}/folders": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/folders/{folder_id}/meta": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

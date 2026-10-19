@@ -1,0 +1,44 @@
+# BasicVariableFlow
+
+main: kit: flow: BasicVariableFlow:
+{
+  entity: "variable",
+  kind: "basic",
+  name: "BasicVariableFlow",
+  step: [
+    {
+      i: {
+        ref: "variable_ref01"
+      }
+
+      m: {
+        file_key: "file_key01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "variable_ref01",
+        srcdatavar: "variable_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "variable01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-variable_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicVariableFlow"
+}

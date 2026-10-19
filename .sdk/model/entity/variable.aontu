@@ -1,0 +1,224 @@
+# Entity: variable
+
+main: kit: entity: variable: {
+
+  alias: field: {}
+
+  fields: {
+    tempIdToRealId: {
+      h: "Temp Id To Real Id"
+      n: "tempIdToRealId"
+      r: true
+      sh: "A map of temporary ids in the request to the real ids of the newly created objects"
+      t: "`$OBJECT`"
+    }
+    variableCollections: {
+      h: "Variable Collections"
+      n: "variableCollections"
+      r: false
+      sh: "For creating, updating, and deleting variable collections."
+      t: "`$ARRAY`"
+    }
+    variableModeValues: {
+      h: "Variable Mode Values"
+      n: "variableModeValues"
+      r: false
+      sh: "For setting a specific value, given a variable and a mode."
+      t: "`$ARRAY`"
+      union: {
+        branches: 7
+        count: 4
+        depth: 9
+      }
+    }
+    variableModes: {
+      h: "Variable Modes"
+      n: "variableModes"
+      r: false
+      sh: "For creating, updating, and deleting modes within variable collections."
+      t: "`$ARRAY`"
+    }
+    variables: {
+      h: "Variables"
+      n: "variables"
+      r: false
+      sh: "For creating, updating, and deleting variables."
+      t: "`$ARRAY`"
+    }
+  }
+
+  name: "variable"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "variableCollections"
+            "variableModeValues"
+            "variableModes"
+            "variables"
+          ]
+          co: {
+            id: "POST /v1/files/{file_key}/variables"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "file_key"
+                or: "file_key"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/files/{file_key}/variables"
+          q: {
+            exist: [
+              "file_key"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "files"
+            }
+            {
+              var: "file_key"
+            }
+            {
+              lit: "variables"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.meta`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v1/files/{file_key}/variables/local"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "file_key"
+                or: "file_key"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v1/files/{file_key}/variables/local"
+          q: {
+            "$action": "local"
+            exist: [
+              "file_key"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "files"
+            }
+            {
+              var: "file_key"
+            }
+            {
+              lit: "variables"
+            }
+            {
+              lit: "local"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.meta`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v1/files/{file_key}/variables/published"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "file_key"
+                or: "file_key"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v1/files/{file_key}/variables/published"
+          q: {
+            "$action": "published"
+            exist: [
+              "file_key"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "files"
+            }
+            {
+              var: "file_key"
+            }
+            {
+              lit: "variables"
+            }
+            {
+              lit: "published"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.meta`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.file")]
+  ]
+
+}

@@ -1,0 +1,48 @@
+{
+  "existing": {
+    "payment": {
+      "PAYMENT00": {
+        "date_of_purchase": "s32",
+        "payment_status": {},
+        "resource_id": "RESOURCE01",
+        "resource_type": "s35",
+        "user_id": "USER01",
+        "id": "PAYMENT00"
+      },
+      "PAYMENT01": {
+        "date_of_purchase": "s64",
+        "payment_status": {},
+        "resource_id": "RESOURCE01",
+        "resource_type": "s67",
+        "user_id": "USER01",
+        "id": "PAYMENT01"
+      },
+      "PAYMENT02": {
+        "date_of_purchase": "s96",
+        "payment_status": {},
+        "resource_id": "RESOURCE01",
+        "resource_type": "s99",
+        "user_id": "USER01",
+        "id": "PAYMENT02"
+      }
+    }
+  },
+  "new": {
+    "payment": {
+      "payment_ref01": {
+        "date_of_purchase": "sc8",
+        "payment_status": {},
+        "resource_id": "RESOURCE01",
+        "resource_type": "scb",
+        "user_id": "USER01"
+      }
+    }
+  },
+  "requests": {
+    "GET /v1/payments": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

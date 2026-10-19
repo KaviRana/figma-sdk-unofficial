@@ -23,3 +23,6 @@
 # A published package name that does not follow the derivation:
 #
 #   main: kit: target: ts: publish: registry: package: '@scope/name'
+
+# Copyright holder for LICENSE, NOTICE and package metadata (defaults to Voxgig).
+main: kit: publisher: name: 'Kavita'

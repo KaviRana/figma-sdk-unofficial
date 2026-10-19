@@ -1,0 +1,278 @@
+# Entity: dev_resource
+
+main: kit: entity: dev_resource: {
+
+  alias: field: {}
+
+  fields: {
+    dev_resources: {
+      h: "Dev Resources"
+      n: "dev_resources"
+      r: true
+      sh: "An array of dev resources."
+      t: "`$ARRAY`"
+    }
+    errors: {
+      h: "Errors"
+      n: "errors"
+      r: false
+      sh: "An array of errors."
+      t: "`$ARRAY`"
+    }
+    file_key: {
+      h: "File Key"
+      n: "file_key"
+      r: true
+      sh: "The file key where the dev resource belongs."
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      sh: "Unique identifier of the dev resource"
+      t: "`$STRING`"
+    }
+    links_created: {
+      h: "Links Created"
+      n: "links_created"
+      r: true
+      sh: "An array of links created."
+      t: "`$ARRAY`"
+    }
+    links_updated: {
+      h: "Links Updated"
+      n: "links_updated"
+      r: false
+      sh: "An array of links updated."
+      t: "`$ARRAY`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: true
+      sh: "The name of the dev resource."
+      t: "`$STRING`"
+    }
+    node_id: {
+      h: "Node Id"
+      n: "node_id"
+      r: true
+      sh: "The target node to attach the dev resource to."
+      t: "`$STRING`"
+    }
+    url: {
+      h: "Url"
+      n: "url"
+      r: true
+      sh: "The URL of the dev resource."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "dev_resource"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "dev_resources"
+          ]
+          co: {
+            id: "POST /v1/dev_resources"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/dev_resources"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "dev_resources"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v1/files/{file_key}/dev_resources"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "file_key"
+                or: "file_key"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "node_id"
+                or: "node_ids"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v1/files/{file_key}/dev_resources"
+          q: {
+            exist: [
+              "file_key"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "files"
+            }
+            {
+              var: "file_key"
+            }
+            {
+              lit: "dev_resources"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.dev_resources`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /v1/files/{file_key}/dev_resources/{dev_resource_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "file_key"
+                or: "file_key"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "dev_resource_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v1/files/{file_key}/dev_resources/{dev_resource_id}"
+          q: {
+            exist: [
+              "file_key"
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              dev_resource_id: "id"
+            }
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "files"
+            }
+            {
+              var: "file_key"
+            }
+            {
+              lit: "dev_resources"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          bf: [
+            "dev_resources"
+          ]
+          co: {
+            id: "PUT /v1/dev_resources"
+            source: "openapi3"
+            version: 2
+          }
+          m: "PUT"
+          o: "/v1/dev_resources"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "dev_resources"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.file")]
+  ]
+
+}

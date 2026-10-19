@@ -1,0 +1,89 @@
+{
+  "existing": {
+    "component": {
+      "COMPONENT00": {
+        "components": [],
+        "containing_frame": {},
+        "created_at": "s84",
+        "cursor": {},
+        "description": "s86",
+        "file_key": "s87",
+        "id": "COMPONENT00",
+        "key": "s89",
+        "name": "s8a",
+        "node_id": "NODE01",
+        "thumbnail_url": "s8c",
+        "updated_at": "s8d",
+        "user": {},
+        "team_id": "TEAM01"
+      },
+      "COMPONENT01": {
+        "components": [],
+        "containing_frame": {},
+        "created_at": "s106",
+        "cursor": {},
+        "description": "s108",
+        "file_key": "s109",
+        "id": "COMPONENT01",
+        "key": "s10b",
+        "name": "s10c",
+        "node_id": "NODE01",
+        "thumbnail_url": "s10e",
+        "updated_at": "s10f",
+        "user": {},
+        "team_id": "TEAM01"
+      },
+      "COMPONENT02": {
+        "components": [],
+        "containing_frame": {},
+        "created_at": "s188",
+        "cursor": {},
+        "description": "s18a",
+        "file_key": "s18b",
+        "id": "COMPONENT02",
+        "key": "s18d",
+        "name": "s18e",
+        "node_id": "NODE01",
+        "thumbnail_url": "s190",
+        "updated_at": "s191",
+        "user": {},
+        "team_id": "TEAM01"
+      }
+    }
+  },
+  "new": {
+    "component": {
+      "component_ref01": {
+        "components": [],
+        "containing_frame": {},
+        "created_at": "s20a",
+        "cursor": {},
+        "description": "s20c",
+        "file_key": "s20d",
+        "key": "s20f",
+        "name": "s210",
+        "node_id": "NODE01",
+        "thumbnail_url": "s212",
+        "updated_at": "s213",
+        "user": {}
+      }
+    }
+  },
+  "requests": {
+    "GET /v1/files/{file_key}/components": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v1/components/{key}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v1/teams/{team_id}/components": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

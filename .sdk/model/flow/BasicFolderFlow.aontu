@@ -1,0 +1,48 @@
+# BasicFolderFlow
+
+main: kit: flow: BasicFolderFlow:
+{
+  entity: "folder",
+  kind: "basic",
+  name: "BasicFolderFlow",
+  step: [
+    {
+      m: {
+        team_id: "team01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "folder_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "folder_ref01",
+        srcdatavar: "folder_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "folder01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-folder_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicFolderFlow"
+}
