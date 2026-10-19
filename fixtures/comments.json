@@ -1,0 +1,369 @@
+{
+  "comments": [
+    {
+      "id": "1971522948",
+      "uuid": "f5e85535-c281-43ff-90c0-7d9faf238884",
+      "file_key": "FILE_KEY_PLACEHOLDER",
+      "parent_id": "",
+      "user": {
+        "handle": "reviewer-b",
+        "img_url": "https://example.com/avatar/reviewer-b.png",
+        "id": "100000000000000002"
+      },
+      "created_at": "2026-10-19T11:00:38.430Z",
+      "resolved_at": "2026-10-19T11:00:53.262Z",
+      "message": "lets talk abou this in online meeting",
+      "reactions": [],
+      "client_meta": {
+        "node_id": "1:3",
+        "node_offset": {
+          "x": 307,
+          "y": 160
+        },
+        "stable_path": [
+          "1:3"
+        ]
+      },
+      "order_id": "13"
+    },
+    {
+      "id": "1971520968",
+      "uuid": "9391a7ae-591b-4038-9650-98dd9eb90803",
+      "file_key": "FILE_KEY_PLACEHOLDER",
+      "parent_id": "1971519270",
+      "user": {
+        "handle": "reviewer-b",
+        "img_url": "https://example.com/avatar/reviewer-b.png",
+        "id": "100000000000000002"
+      },
+      "created_at": "2026-10-19T10:59:22.587Z",
+      "resolved_at": null,
+      "message": "yes i will check",
+      "reactions": [
+        {
+          "emoji": ":+1:",
+          "created_at": "2026-10-19T10:59:30.265Z",
+          "user": {
+            "id": "100000000000000001",
+            "handle": "designer-a",
+            "img_url": "https://example.com/avatar/designer-a.png"
+          }
+        }
+      ],
+      "client_meta": null,
+      "order_id": null
+    },
+    {
+      "id": "1971519270",
+      "uuid": "e147d1d4-4fe0-4ed1-9138-52ddd079d484",
+      "file_key": "FILE_KEY_PLACEHOLDER",
+      "parent_id": "",
+      "user": {
+        "handle": "designer-a",
+        "img_url": "https://example.com/avatar/designer-a.png",
+        "id": "100000000000000001"
+      },
+      "created_at": "2026-10-19T10:58:15.937Z",
+      "resolved_at": null,
+      "message": "@reviewer-b  “can you check the hero copy?",
+      "reactions": [],
+      "client_meta": {
+        "node_id": "1:2",
+        "node_offset": {
+          "x": 106,
+          "y": 91
+        },
+        "stable_path": [
+          "1:2"
+        ]
+      },
+      "order_id": "12"
+    },
+    {
+      "id": "1971518546",
+      "uuid": "031f52f1-8b0c-4ada-960b-fcce90f71758",
+      "file_key": "FILE_KEY_PLACEHOLDER",
+      "parent_id": "",
+      "user": {
+        "handle": "designer-a",
+        "img_url": "https://example.com/avatar/designer-a.png",
+        "id": "100000000000000001"
+      },
+      "created_at": "2026-10-19T10:57:50.724Z",
+      "resolved_at": null,
+      "message": "Should look like this",
+      "reactions": [],
+      "client_meta": {
+        "node_id": "1:4",
+        "node_offset": {
+          "x": 269,
+          "y": 243
+        },
+        "stable_path": [
+          "1:4"
+        ]
+      },
+      "order_id": "11"
+    },
+    {
+      "id": "1971517194",
+      "uuid": "4b7f1da7-26f7-4c64-a3c2-7e689f2ecf15",
+      "file_key": "FILE_KEY_PLACEHOLDER",
+      "parent_id": "",
+      "user": {
+        "handle": "designer-a",
+        "img_url": "https://example.com/avatar/designer-a.png",
+        "id": "100000000000000001"
+      },
+      "created_at": "2026-10-19T10:56:59.819Z",
+      "resolved_at": null,
+      "message": "Love this layout :tada: just fix the spacing",
+      "reactions": [],
+      "client_meta": {
+        "node_id": "1:3",
+        "node_offset": {
+          "x": 53,
+          "y": 262
+        },
+        "stable_path": [
+          "1:3"
+        ]
+      },
+      "order_id": "10"
+    },
+    {
+      "id": "1971515010",
+      "uuid": "ce711334-2692-4bf5-912a-3eb2cfec3072",
+      "file_key": "FILE_KEY_PLACEHOLDER",
+      "parent_id": "",
+      "user": {
+        "handle": "designer-a",
+        "img_url": "https://example.com/avatar/designer-a.png",
+        "id": "100000000000000001"
+      },
+      "created_at": "2026-10-19T10:55:39.613Z",
+      "resolved_at": null,
+      "message": "Dark mode preview looks washed out",
+      "reactions": [],
+      "client_meta": {
+        "node_id": "1:4",
+        "node_offset": {
+          "x": 73,
+          "y": 53
+        },
+        "stable_path": [
+          "1:4"
+        ]
+      },
+      "order_id": "9"
+    },
+    {
+      "id": "1971514715",
+      "uuid": "196b6c7a-3503-4777-a1c1-bf0fb96c6b75",
+      "file_key": "FILE_KEY_PLACEHOLDER",
+      "parent_id": "",
+      "user": {
+        "handle": "designer-a",
+        "img_url": "https://example.com/avatar/designer-a.png",
+        "id": "100000000000000001"
+      },
+      "created_at": "2026-10-19T10:55:28.410Z",
+      "resolved_at": null,
+      "message": "“Delete account” needs a confirm step",
+      "reactions": [],
+      "client_meta": {
+        "node_id": "1:4",
+        "node_offset": {
+          "x": 103,
+          "y": 265
+        },
+        "stable_path": [
+          "1:4"
+        ]
+      },
+      "order_id": "8"
+    },
+    {
+      "id": "1971514523",
+      "uuid": "6aa9c27d-1a6d-46e7-8257-518800522cd7",
+      "file_key": "FILE_KEY_PLACEHOLDER",
+      "parent_id": "",
+      "user": {
+        "handle": "designer-a",
+        "img_url": "https://example.com/avatar/designer-a.png",
+        "id": "100000000000000001"
+      },
+      "created_at": "2026-10-19T10:55:22.583Z",
+      "resolved_at": null,
+      "message": "Toggle labels should be left-aligned",
+      "reactions": [],
+      "client_meta": {
+        "node_id": "1:4",
+        "node_offset": {
+          "x": 285,
+          "y": 58
+        },
+        "stable_path": [
+          "1:4"
+        ]
+      },
+      "order_id": "7"
+    },
+    {
+      "id": "1971514341",
+      "uuid": "bc20b6a8-04a6-4a81-839d-7d9370512842",
+      "file_key": "FILE_KEY_PLACEHOLDER",
+      "parent_id": "",
+      "user": {
+        "handle": "designer-a",
+        "img_url": "https://example.com/avatar/designer-a.png",
+        "id": "100000000000000001"
+      },
+      "created_at": "2026-10-19T10:55:16.091Z",
+      "resolved_at": "2026-10-19T11:01:13.663Z",
+      "message": "Field spacing is inconsistent: 16 vs 24",
+      "reactions": [],
+      "client_meta": {
+        "node_id": "1:3",
+        "node_offset": {
+          "x": 372,
+          "y": 53
+        },
+        "stable_path": [
+          "1:3"
+        ]
+      },
+      "order_id": "6"
+    },
+    {
+      "id": "1971514107",
+      "uuid": "ab8b6644-321e-40f0-8887-9694d93b5145",
+      "file_key": "FILE_KEY_PLACEHOLDER",
+      "parent_id": "",
+      "user": {
+        "handle": "designer-a",
+        "img_url": "https://example.com/avatar/designer-a.png",
+        "id": "100000000000000001"
+      },
+      "created_at": "2026-10-19T10:55:07.118Z",
+      "resolved_at": null,
+      "message": "Should there be a show-password toggle?",
+      "reactions": [],
+      "client_meta": {
+        "node_id": "1:3",
+        "node_offset": {
+          "x": 280,
+          "y": 274
+        },
+        "stable_path": [
+          "1:3"
+        ]
+      },
+      "order_id": "5"
+    },
+    {
+      "id": "1971513962",
+      "uuid": "33318a37-3e20-4c76-bcb2-0d3872f32616",
+      "file_key": "FILE_KEY_PLACEHOLDER",
+      "parent_id": "",
+      "user": {
+        "handle": "designer-a",
+        "img_url": "https://example.com/avatar/designer-a.png",
+        "id": "100000000000000001"
+      },
+      "created_at": "2026-10-19T10:55:01.883Z",
+      "resolved_at": null,
+      "message": "No error message for a wrong password",
+      "reactions": [],
+      "client_meta": {
+        "node_id": "1:3",
+        "node_offset": {
+          "x": 123,
+          "y": 114
+        },
+        "stable_path": [
+          "1:3"
+        ]
+      },
+      "order_id": "4"
+    },
+    {
+      "id": "1971513611",
+      "uuid": "67778176-80b2-4f79-b572-c71115d6c48a",
+      "file_key": "FILE_KEY_PLACEHOLDER",
+      "parent_id": "",
+      "user": {
+        "handle": "designer-a",
+        "img_url": "https://example.com/avatar/designer-a.png",
+        "id": "100000000000000001"
+      },
+      "created_at": "2026-10-19T10:54:49.088Z",
+      "resolved_at": null,
+      "message": "CTA button needs more padding",
+      "reactions": [],
+      "client_meta": {
+        "node_id": "1:2",
+        "node_offset": {
+          "x": 253,
+          "y": 258
+        },
+        "stable_path": [
+          "1:2"
+        ]
+      },
+      "order_id": "3"
+    },
+    {
+      "id": "1971513469",
+      "uuid": "129c2a4d-47b2-43a7-aa3b-ca6635cfdd3c",
+      "file_key": "FILE_KEY_PLACEHOLDER",
+      "parent_id": "",
+      "user": {
+        "handle": "designer-a",
+        "img_url": "https://example.com/avatar/designer-a.png",
+        "id": "100000000000000001"
+      },
+      "created_at": "2026-10-19T10:54:43.182Z",
+      "resolved_at": null,
+      "message": "Use the brand blue here, not the default blue",
+      "reactions": [],
+      "client_meta": {
+        "node_id": "1:2",
+        "node_offset": {
+          "x": 303,
+          "y": 80
+        },
+        "stable_path": [
+          "1:2"
+        ]
+      },
+      "order_id": "2"
+    },
+    {
+      "id": "1971512298",
+      "uuid": "26dc8dff-d0b4-4779-bb25-3b4b63f3c7b6",
+      "file_key": "FILE_KEY_PLACEHOLDER",
+      "parent_id": "",
+      "user": {
+        "handle": "designer-a",
+        "img_url": "https://example.com/avatar/designer-a.png",
+        "id": "100000000000000001"
+      },
+      "created_at": "2026-10-19T10:53:58.686Z",
+      "resolved_at": null,
+      "message": "Hero text gets cut off at mobile width",
+      "reactions": [],
+      "client_meta": {
+        "node_id": "1:2",
+        "node_offset": {
+          "x": 206,
+          "y": 61
+        },
+        "stable_path": [
+          "1:2"
+        ]
+      },
+      "order_id": "1"
+    }
+  ]
+}
