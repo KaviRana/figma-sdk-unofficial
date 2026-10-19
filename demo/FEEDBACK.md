@@ -1,11 +1,11 @@
 # Feedback
 
 Unresolved comments on Figma file `FILE_KEY_PLACEHOLDER`, grouped by frame.
-Frames are shown by node id: frame names need the file nodes endpoint, which this script does not call.
+Frame names come from a saved file nodes response; a frame missing from it is shown by node id.
 
 > **Missing from API response:** image attachments. The comments response has no attachment field, so attachments are not shown.
 
-## Frame `1:2`
+## Home (`1:2`)
 
 - [ ] Hero text gets cut off at mobile width
       — designer-a, 2026-10-19 10:53:58 UTC
@@ -18,7 +18,7 @@ Frames are shown by node id: frame names need the file nodes endpoint, which thi
   - yes i will check
     — reviewer-b, 2026-10-19 10:59:22 UTC · reactions: :+1:
 
-## Frame `1:3`
+## Login (`1:3`)
 
 - [ ] No error message for a wrong password
       — designer-a, 2026-10-19 10:55:01 UTC
@@ -27,7 +27,7 @@ Frames are shown by node id: frame names need the file nodes endpoint, which thi
 - [ ] Love this layout :tada: just fix the spacing
       — designer-a, 2026-10-19 10:56:59 UTC
 
-## Frame `1:4`
+## Settings (`1:4`)
 
 - [ ] Toggle labels should be left-aligned
       — designer-a, 2026-10-19 10:55:22 UTC

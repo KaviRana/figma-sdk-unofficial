@@ -4,10 +4,13 @@
 // Usage (Node 24+, from the repo root, after building ts/):
 //   node demo/feedback.ts                  # live: reads FIGMA_TOKEN and FIGMA_FILE_KEY from .env
 //   node demo/feedback.ts --save-fixture   # also saves the raw list response to fixtures/
+//   node demo/feedback.ts --fetch-frame-names  # one GET file nodes call, saved to fixtures/file-nodes.json
 //
-// Only the comments endpoints are called: GET and POST /v1/files/{file_key}/comments.
+// Each run calls only the comments endpoints: GET and POST /v1/files/{file_key}/comments.
+// Frame names come from fixtures/file-nodes.json; GET /v1/files/{file_key}/nodes is
+// called only with --fetch-frame-names, since that endpoint has a small monthly budget.
 
-import { writeFileSync, mkdirSync } from 'node:fs'
+import { existsSync, readFileSync, writeFileSync, mkdirSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
@@ -17,6 +20,7 @@ const HERE = dirname(fileURLToPath(import.meta.url))
 const ROOT = join(HERE, '..')
 
 export const REPLY = 'Logged'
+export const NODES_FIXTURE = join(ROOT, 'fixtures', 'file-nodes.json')
 
 type Comment = Record<string, any>
 
@@ -71,7 +75,23 @@ export function hasReply(threadReplies: Comment[]): boolean {
 }
 
 
-export function buildFeedback(comments: Comment[], fileKey: string): string {
+export function frameNames(nodesBody: any): Record<string, string> {
+  const names: Record<string, string> = {}
+  for (const [id, node] of Object.entries<any>(nodesBody?.nodes ?? {})) {
+    if (null != node?.document?.name) {
+      names[id] = node.document.name
+    }
+  }
+  return names
+}
+
+
+function savedFrameNames(file: string): Record<string, string> {
+  return existsSync(file) ? frameNames(JSON.parse(readFileSync(file, 'utf8'))) : {}
+}
+
+
+export function buildFeedback(comments: Comment[], fileKey: string, names: Record<string, string> = {}): string {
   const replies = new Map<string, Comment[]>()
   for (const c of comments) {
     const parent = parentOf(c)
@@ -98,7 +118,7 @@ export function buildFeedback(comments: Comment[], fileKey: string): string {
     '# Feedback',
     '',
     `Unresolved comments on Figma file \`${fileKey}\`, grouped by frame.`,
-    'Frames are shown by node id: frame names need the file nodes endpoint, which this script does not call.',
+    'Frame names come from a saved file nodes response; a frame missing from it is shown by node id.',
     '',
   ]
 
@@ -118,7 +138,9 @@ export function buildFeedback(comments: Comment[], fileKey: string): string {
 
   const keys = [...frames.keys()].sort((a, b) => ('' === a ? 1 : '' === b ? -1 : a.localeCompare(b)))
   for (const key of keys) {
-    out.push('' === key ? '## Not attached to a frame' : `## Frame \`${key}\``, '')
+    const heading = '' === key ? 'Not attached to a frame'
+      : null != names[key] ? `${names[key]} (\`${key}\`)` : `Frame \`${key}\``
+    out.push(`## ${heading}`, '')
     for (const c of frames.get(key)!) {
       out.push(`- [ ] ${indent(c.message, '      ')}`)
       const reacts = reactionText(c)
@@ -139,11 +161,12 @@ export function buildFeedback(comments: Comment[], fileKey: string): string {
 }
 
 
-export async function run(client: any, fileKey: string, outFile: string): Promise<RunResult> {
+export async function run(client: any, fileKey: string, outFile: string,
+  names: Record<string, string> = {}): Promise<RunResult> {
   const listed = await client.Comment().list({ file_key: fileKey })
   const comments: Comment[] = listed.map((e: any) => e.data())
 
-  const markdown = buildFeedback(comments, fileKey)
+  const markdown = buildFeedback(comments, fileKey, names)
   writeFileSync(outFile, markdown)
 
   const open = comments.filter((c) => null == parentOf(c) && null == c.resolved_at)
@@ -161,16 +184,35 @@ export async function run(client: any, fileKey: string, outFile: string): Promis
 }
 
 
-// Wraps fetch to save the raw comments list body; request headers are never touched or logged.
-function savingFetch(file: string) {
+// Wraps fetch to save a raw GET response body; request headers are never touched or logged.
+function savingFetch(file: string, path: RegExp) {
   return async (url: string, init: any) => {
     const res = await fetch(url, init)
-    if ('GET' === (init?.method ?? 'GET').toUpperCase() && /\/v1\/files\/[^/]+\/comments(\?|$)/.test(url)) {
+    if ('GET' === (init?.method ?? 'GET').toUpperCase() && path.test(url)) {
       mkdirSync(dirname(file), { recursive: true })
       writeFileSync(file, JSON.stringify(JSON.parse(await res.clone().text()), null, 2) + '\n')
     }
     return res
   }
+}
+
+
+// One GET file nodes call for every frame that has a comment. Its own client has no
+// retry, so a failure costs one call, not several.
+export async function fetchFrameNames(apikey: string, fileKey: string, commentsClient: any,
+  file: string = NODES_FIXTURE) {
+  const listed = await commentsClient.Comment().list({ file_key: fileKey })
+  const ids = [...new Set(listed.map((e: any) => frameOf(e.data())).filter(Boolean))].sort()
+  if (0 === ids.length) {
+    return
+  }
+  const nodes = new FigmaSDK({
+    apikey,
+    system: { fetch: savingFetch(file, /\/v1\/files\/[^/]+\/nodes\?/) },
+  })
+  // Without $action the selector picks GET /v1/images/{file_key} for these arguments.
+  await nodes.File().load({ $action: 'node', file_key: fileKey, ids: ids.join(','), depth: 1 })
+  console.log(`saved frame names for ${ids.length} frames to fixtures/file-nodes.json`)
 }
 
 
@@ -190,10 +232,15 @@ async function main() {
       ratelimit: { active: true, rate: 5 / 60, burst: 1 },
       retry: { active: true, retries: 1 },
     },
-    ...(process.argv.includes('--save-fixture') ? { system: { fetch: savingFetch(fixture) } } : {}),
+    ...(process.argv.includes('--save-fixture')
+      ? { system: { fetch: savingFetch(fixture, /\/v1\/files\/[^/]+\/comments(\?|$)/) } } : {}),
   })
 
-  const res = await run(client, fileKey, join(HERE, 'FEEDBACK.md'))
+  if (process.argv.includes('--fetch-frame-names')) {
+    await fetchFrameNames(apikey, fileKey, client)
+  }
+
+  const res = await run(client, fileKey, join(HERE, 'FEEDBACK.md'), savedFrameNames(NODES_FIXTURE))
   console.log(`unresolved threads: ${res.unresolved}`)
   console.log(`replied "${REPLY}" to: ${res.replied.length ? res.replied.join(', ') : 'none'}`)
   console.log('wrote demo/FEEDBACK.md')

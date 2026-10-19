@@ -9,12 +9,14 @@ import { join, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 import { FigmaSDK } from '../ts/dist/FigmaSDK.js'
-import { run, REPLY } from './feedback.ts'
+import { run, frameNames, REPLY } from './feedback.ts'
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..')
 const FIXTURE = process.env.FEEDBACK_FIXTURE ?? join(ROOT, 'fixtures', 'comments.json')
+const NODES = join(ROOT, 'fixtures', 'file-nodes.json')
 
 const comments: any[] = JSON.parse(readFileSync(FIXTURE, 'utf8')).comments
+const names = process.env.FEEDBACK_FIXTURE ? {} : frameNames(JSON.parse(readFileSync(NODES, 'utf8')))
 const fileKey: string = comments[0]?.file_key ?? 'fixture'
 
 const isTop = (c: any) => !c.parent_id
@@ -40,8 +42,13 @@ test('fixture has the shapes the demo handles', () => {
 
 test('FEEDBACK.md lists unresolved threads with replies, skips resolved', async () => {
   const out = join(mkdtempSync(join(tmpdir(), 'feedback-')), 'FEEDBACK.md')
-  const { markdown } = await run(seeded(), fileKey, out)
+  const { markdown } = await run(seeded(), fileKey, out, names)
   assert.equal(readFileSync(out, 'utf8'), markdown)
+
+  for (const id of new Set(open.map((c) => c.client_meta?.node_id).filter(Boolean))) {
+    const heading = null != names[id] ? `## ${names[id]} (\`${id}\`)` : `## Frame \`${id}\``
+    assert.ok(markdown.includes(heading), `heading for frame ${id}`)
+  }
 
   for (const c of open) {
     const line = markdown.indexOf(`- [ ] ${c.message.split('\n')[0]}`)
