@@ -22,13 +22,38 @@ The Figma REST API reads and writes Figma files, comments, components, styles, v
 
 `demo/feedback.ts` turns a file's comments into a checklist. It lists the unresolved comments on the Figma file named by `FIGMA_FILE_KEY`, writes `demo/FEEDBACK.md` grouped by frame with author and date (replies under their parent, resolved comments skipped), and replies "Logged" once to each unresolved thread, so a second run adds nothing. It calls only the comments endpoints; frame names come from a saved file nodes response in `fixtures/file-nodes.json`.
 
-It needs Node 24 or later, a built `ts/` and a `.env` with `FIGMA_TOKEN` and `FIGMA_FILE_KEY`:
+It needs Node 24 or later.
+
+### Set up a token
+
+1. In Figma, open **Settings**, then **Security**, then **Personal access tokens**, and generate a new token with these scopes:
+   - `file_comments:read`: list the comments
+   - `file_comments:write`: post the "Logged" replies
+   - `file_content:read`: read frame names, used only by `--fetch-frame-names`
+2. Copy the file key from the file's URL: `https://www.figma.com/design/<file-key>/...`
+3. Add both to `.env` in the repository root (`.gitignore` already excludes it):
+
+```sh
+FIGMA_APIKEY=<your-token>
+FIGMA_FILE_KEY=<your-file-key>
+```
+
+### Run it
+
+> **Warning:** a live run posts a real "Logged" reply, under your Figma account, to every unresolved thread that does not have one yet. Everyone with access to the file sees these replies. Try it on a test file first.
 
 ```sh
 (cd ts && npm install && npm run build)
 node demo/feedback.ts                      # list comments, write FEEDBACK.md, reply
 node demo/feedback.ts --fetch-frame-names  # also refresh frame names: one GET file nodes call
-node --test "demo/*.test.ts"               # offline test against fixtures/
+```
+
+### Run the offline test instead
+
+The test runs the demo against the saved responses in `fixtures/`. It needs a built `ts/` but no token or `.env`, makes no network calls and posts nothing:
+
+```sh
+node --test "demo/*.test.ts"
 ```
 
 ## Entities, not endpoints

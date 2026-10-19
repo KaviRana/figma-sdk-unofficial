@@ -2,7 +2,7 @@
 // "Logged" to each unresolved thread not already replied to.
 //
 // Usage (Node 24+, from the repo root, after building ts/):
-//   node demo/feedback.ts                  # live: reads FIGMA_TOKEN and FIGMA_FILE_KEY from .env
+//   node demo/feedback.ts                  # live: reads FIGMA_APIKEY and FIGMA_FILE_KEY from .env
 //   node demo/feedback.ts --save-fixture   # also saves the raw list response to fixtures/
 //   node demo/feedback.ts --fetch-frame-names  # one GET file nodes call, saved to fixtures/file-nodes.json
 //
@@ -218,10 +218,10 @@ export async function fetchFrameNames(apikey: string, fileKey: string, commentsC
 
 async function main() {
   process.loadEnvFile(join(ROOT, '.env'))
-  const apikey = process.env.FIGMA_TOKEN
+  const apikey = process.env.FIGMA_APIKEY
   const fileKey = process.env.FIGMA_FILE_KEY
   if (!apikey || !fileKey) {
-    throw new Error('FIGMA_TOKEN and FIGMA_FILE_KEY must be set in .env')
+    throw new Error('FIGMA_APIKEY and FIGMA_FILE_KEY must be set in .env')
   }
 
   const fixture = join(ROOT, 'fixtures', 'comments.json')
