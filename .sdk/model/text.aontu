@@ -14,3 +14,8 @@
 #
 # The slots are title, summary, website, tagline, about_md, homepage,
 # docs_url, meta_source and entity_desc. Any other key fails the model build.
+
+main: kit: text: {
+  summary: 'An unofficial TypeScript and Python client for the [Figma REST API](https://developers.figma.com/docs/rest-api/). It is not affiliated with, endorsed by, or sponsored by Figma.'
+  about_md: 'The Figma REST API reads and writes Figma files, comments, components, styles, variables, webhooks and more. This SDK is generated from the [OpenAPI spec Figma publishes](https://github.com/figma/rest-api-spec).\n\n## Demo\n\n`demo/feedback.ts` turns a file\'s comments into a checklist. It lists the unresolved comments on the Figma file named by `FIGMA_FILE_KEY`, writes `demo/FEEDBACK.md` grouped by frame with author and date (replies under their parent, resolved comments skipped), and replies "Logged" once to each unresolved thread, so a second run adds nothing. It calls only the comments endpoints; frame names come from a saved file nodes response in `fixtures/file-nodes.json`.\n\nIt needs Node 24 or later, a built `ts/` and a `.env` with `FIGMA_TOKEN` and `FIGMA_FILE_KEY`:\n\n```sh\n(cd ts && npm install && npm run build)\nnode demo/feedback.ts                      # list comments, write FEEDBACK.md, reply\nnode demo/feedback.ts --fetch-frame-names  # also refresh frame names: one GET file nodes call\nnode --test "demo/*.test.ts"               # offline test against fixtures/\n```'
+}
