@@ -64,15 +64,15 @@ print(payment.data_get())
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/figma-sdk` | publish pending — [install from source](ts/README.md#install) |
-| Python | `voxgig-sdk-figma-sdk` | publish pending — [install from source](py/README.md#install) |
+| TypeScript | `figma-sdk-unofficial` | publish pending — [install from source](ts/README.md#install) |
+| Python | `figma-sdk-unofficial` | publish pending — [install from source](py/README.md#install) |
 
 ## Quickstart
 
 ### TypeScript
 
 ```ts
-import { FigmaSDK } from '@voxgig-sdk/figma-sdk'
+import { FigmaSDK } from 'figma-sdk-unofficial'
 
 const client = new FigmaSDK({
   apikey: process.env.FIGMA_APIKEY,

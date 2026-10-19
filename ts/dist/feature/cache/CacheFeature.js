@@ -1,0 +1,144 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.CacheFeature = void 0;
+const BaseFeature_1 = require("../base/BaseFeature");
+class CacheFeature extends BaseFeature_1.BaseFeature {
+    version = '0.0.1';
+    name = 'cache';
+    active = true;
+    _client;
+    _options = {};
+    _store = new Map();
+    init(ctx, options) {
+        this._client = ctx.client;
+        this._options = options || {};
+        this.active = options.active;
+        if (!this.active) {
+            return;
+        }
+        this._store = new Map();
+        const self = this;
+        const utility = ctx.utility;
+        const inner = utility.fetcher;
+        utility.fetcher = async function (ctx2, url, fetchdef) {
+            return self._through(ctx2, url, fetchdef, inner);
+        };
+    }
+    async _through(ctx, url, fetchdef, inner) {
+        const method = ((fetchdef && fetchdef.method) || 'GET').toUpperCase();
+        const methods = this._options.methods || ['GET'];
+        if (methods.indexOf(method) < 0) {
+            return inner(ctx, url, fetchdef);
+        }
+        const key = method + ' ' + url;
+        const now = this._now();
+        const hit = this._store.get(key);
+        if (null != hit && hit.expiry > now) {
+            this._track('hit');
+            return this._replay(hit.snapshot);
+        }
+        const res = await inner(ctx, url, fetchdef);
+        if (this._cacheable(res)) {
+            const snapshot = await this._snapshot(res);
+            // A body that is not JSON is not stored, and the replay hands its text
+            // on: the operation reports it as it would without the cache.
+            if (snapshot.failed) {
+                this._track('bypass');
+                return this._replay(snapshot);
+            }
+            const ttl = null == this._options.ttl ? 5000 : this._options.ttl;
+            this._evict();
+            this._store.set(key, { expiry: now + ttl, snapshot });
+            this._track('miss');
+            return this._replay(snapshot);
+        }
+        this._track('bypass');
+        return res;
+    }
+    _cacheable(res) {
+        if (null == res || res instanceof Error) {
+            return false;
+        }
+        const status = res.status;
+        return 'number' === typeof status && status >= 200 && status < 300;
+    }
+    async _snapshot(res) {
+        let data = undefined;
+        let text = undefined;
+        let unread = undefined;
+        let failed = false;
+        if ('function' === typeof res.text) {
+            try {
+                text = await res.text();
+                data = '' === text.trim() ? undefined : JSON.parse(text);
+            }
+            catch (err) {
+                // Unread, or not JSON: the replay's text() hands the same failure on.
+                failed = true;
+                unread = null == text ? err : undefined;
+            }
+        }
+        else if ('function' === typeof res.json) {
+            try {
+                data = await res.json();
+            }
+            catch (_e) {
+                data = undefined;
+            }
+        }
+        const headers = {};
+        if (res.headers && 'function' === typeof res.headers.forEach) {
+            res.headers.forEach((v, k) => headers[k] = v);
+        }
+        return { status: res.status, statusText: res.statusText, data, headers, text, unread, failed };
+    }
+    _replay(snapshot) {
+        const headers = snapshot.headers || {};
+        return {
+            status: snapshot.status,
+            statusText: snapshot.statusText,
+            body: 'not-used',
+            json: async () => snapshot.data,
+            ...(null == snapshot.text && null == snapshot.unread ? {} : {
+                text: async () => {
+                    if (null != snapshot.unread) {
+                        throw snapshot.unread;
+                    }
+                    return snapshot.text;
+                },
+            }),
+            headers: {
+                get(key) { return headers[String(key).toLowerCase()]; },
+                forEach(callback) {
+                    Object.keys(headers).forEach((k) => callback(headers[k], k, this));
+                },
+            },
+        };
+    }
+    _evict() {
+        const max = null == this._options.max ? 256 : this._options.max;
+        while (this._store.size >= max) {
+            const oldest = this._store.keys().next().value;
+            if (null == oldest) {
+                break;
+            }
+            this._store.delete(oldest);
+        }
+    }
+    _now() {
+        const now = this._options.now;
+        if ('function' === typeof now) {
+            return now();
+        }
+        return Date.now();
+    }
+    _track(kind) {
+        const client = this._client;
+        if (null == client._cache) {
+            client._cache = { hit: 0, miss: 0, bypass: 0 };
+        }
+        client._cache[kind]++;
+    }
+}
+exports.CacheFeature = CacheFeature;
+//# sourceMappingURL=CacheFeature.js.map

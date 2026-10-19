@@ -26,3 +26,7 @@
 
 # Copyright holder for LICENSE, NOTICE and package metadata (defaults to Voxgig).
 main: kit: publisher: name: 'Kavita'
+
+# Published package names: not under the @voxgig-sdk scope (origin in sdk.aontu).
+main: kit: target: ts: publish: registry: package: 'figma-sdk-unofficial'
+main: kit: target: py: publish: registry: package: 'figma-sdk-unofficial'

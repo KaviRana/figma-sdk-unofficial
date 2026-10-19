@@ -10,5 +10,5 @@ if [[ ! -f "$trust" ]]; then
 fi
 exec node "$trust" \
   --repository 'voxgig-sdk/figma-sdk' \
-  --publish '@voxgig-sdk/figma-sdk=publish-ts.yml' \
+  --publish 'figma-sdk-unofficial=publish-ts.yml' \
   "$@"

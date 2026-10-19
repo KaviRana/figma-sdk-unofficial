@@ -8,7 +8,7 @@ it, and how this repo releases is none of their business.
 
 | target | package | workflow |
 |---|---|---|
-| `ts/` | @voxgig-sdk/figma-sdk | `.github/workflows/publish-ts.yml` |
+| `ts/` | figma-sdk-unofficial | `.github/workflows/publish-ts.yml` |
 
 ## How a release happens
 
@@ -66,7 +66,7 @@ required), run
 above and leaves a package that is already set up alone; for the
 `ts` target it runs:
 
-    npm trust github @voxgig-sdk/figma-sdk \
+    npm trust github figma-sdk-unofficial \
       --repository voxgig-sdk/figma-sdk \
       --file publish-ts.yml \
       --allow-publish
@@ -78,8 +78,8 @@ difference, including a trusted publisher this repository did not ask for.
 npm, and `--otp <code>` hands npm a one-time password when it asks for one.
 An npm with no `npm trust` command is bypassed for `npx npm@latest`.
 
-`npm trust list @voxgig-sdk/figma-sdk` shows the configuration, and
-`npm trust revoke @voxgig-sdk/figma-sdk --id=<id>` removes one.
+`npm trust list figma-sdk-unofficial` shows the configuration, and
+`npm trust revoke figma-sdk-unofficial --id=<id>` removes one.
 
 **The workflow filename is part of the configuration.** Renaming
 `publish-ts.yml` breaks publishing until the npm side is updated to match.

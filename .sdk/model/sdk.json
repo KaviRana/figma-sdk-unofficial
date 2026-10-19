@@ -6796,7 +6796,7 @@
             "registry": {
               "active": false,
               "name": "pypi",
-              "package": "",
+              "package": "figma-sdk-unofficial",
               "state": "pending",
               "url": "https://pypi.org",
               "vault": {
@@ -6874,7 +6874,7 @@
             "registry": {
               "active": false,
               "name": "npm",
-              "package": "",
+              "package": "figma-sdk-unofficial",
               "state": "pending",
               "url": "https://registry.npmjs.org",
               "vault": {

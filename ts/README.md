@@ -32,7 +32,7 @@ loading a specific record. The client sends the API key in the `X-Figma-Token` h
 ### 1. Create a client
 
 ```ts
-import { FigmaSDK } from '@voxgig-sdk/figma-sdk'
+import { FigmaSDK } from 'figma-sdk-unofficial'
 
 const client = new FigmaSDK({
   apikey: process.env.FIGMA_APIKEY,
@@ -1417,7 +1417,7 @@ figma/
 Import the SDK from the package root:
 
 ```ts
-import { FigmaSDK } from '@voxgig-sdk/figma-sdk'
+import { FigmaSDK } from 'figma-sdk-unofficial'
 ```
 
 ### Entity state
