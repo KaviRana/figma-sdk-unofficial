@@ -67,7 +67,7 @@ above and leaves a package that is already set up alone; for the
 `ts` target it runs:
 
     npm trust github figma-sdk-unofficial \
-      --repository voxgig-sdk/figma-sdk \
+      --repository KaviRana/figma-sdk-unofficial \
       --file publish-ts.yml \
       --allow-publish
 

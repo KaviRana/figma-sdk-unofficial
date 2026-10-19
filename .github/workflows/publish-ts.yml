@@ -8,7 +8,7 @@
 # SET UP ONCE, by a maintainer with publish rights — see .sdk/PUBLISHING.md:
 #
 #   npm trust github figma-sdk-unofficial \
-#     --repository voxgig-sdk/figma-sdk \
+#     --repository KaviRana/figma-sdk-unofficial \
 #     --file publish-ts.yml \
 #     --allow-publish
 #

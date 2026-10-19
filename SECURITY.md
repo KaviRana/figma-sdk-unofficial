@@ -6,7 +6,7 @@ Please report security issues privately to Kavita.
 
 Do not open public GitHub issues for suspected vulnerabilities.
 
-For non-security bugs, use the issue tracker: https://github.com/voxgig-sdk/figma-sdk/issues
+For non-security bugs, use the issue tracker: https://github.com/KaviRana/figma-sdk-unofficial/issues
 
 ## Scope
 

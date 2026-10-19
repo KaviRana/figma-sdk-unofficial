@@ -9,6 +9,6 @@ if [[ ! -f "$trust" ]]; then
   exit 1
 fi
 exec node "$trust" \
-  --repository 'voxgig-sdk/figma-sdk' \
+  --repository 'KaviRana/figma-sdk-unofficial' \
   --publish 'figma-sdk-unofficial=publish-ts.yml' \
   "$@"

@@ -15,12 +15,12 @@ predictable and low-friction for both humans and AI agents.
 
 ## Install
 This package is not yet published to npm. Install it from the GitHub
-release tag (`ts/vX.Y.Z`, see [Tags](https://github.com/voxgig-sdk/figma-sdk/tags)), or from a
+release tag (`ts/vX.Y.Z`, see [Tags](https://github.com/KaviRana/figma-sdk-unofficial/tags)), or from a
 clone, which carries the compiled `dist/`:
 
 ```bash
-git clone https://github.com/voxgig-sdk/figma-sdk
-npm install ./figma-sdk/ts
+git clone https://github.com/KaviRana/figma-sdk-unofficial
+npm install ./figma-sdk-unofficial/ts
 ```
 
 

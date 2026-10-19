@@ -9,13 +9,13 @@
     "api-client",
     "figma"
   ],
-  "homepage": "https://github.com/voxgig-sdk/figma-sdk#readme",
+  "homepage": "https://github.com/KaviRana/figma-sdk-unofficial#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/voxgig-sdk/figma-sdk.git"
+    "url": "git+https://github.com/KaviRana/figma-sdk-unofficial.git"
   },
   "bugs": {
-    "url": "https://github.com/voxgig-sdk/figma-sdk/issues"
+    "url": "https://github.com/KaviRana/figma-sdk-unofficial/issues"
   },
   "main": "dist/FigmaSDK.js",
   "type": "commonjs",

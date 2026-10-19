@@ -30,3 +30,6 @@ main: kit: publisher: name: 'Kavita'
 # Published package names: not under the @voxgig-sdk scope (origin in sdk.aontu).
 main: kit: target: ts: publish: registry: package: 'figma-sdk-unofficial'
 main: kit: target: py: publish: registry: package: 'figma-sdk-unofficial'
+
+# Repository for generated links (defaults to github.com/<origin>/<name>-sdk).
+main: kit: repo: { host: 'github.com', path: 'KaviRana/figma-sdk-unofficial' }

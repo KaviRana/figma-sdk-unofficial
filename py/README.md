@@ -15,7 +15,7 @@ keeps the cognitive load low.
 
 ## Install
 This package is not yet published to PyPI. Install it from the GitHub
-release tag (`py/vX.Y.Z`, see [Tags](https://github.com/voxgig-sdk/figma-sdk/tags)) or
+release tag (`py/vX.Y.Z`, see [Tags](https://github.com/KaviRana/figma-sdk-unofficial/tags)) or
 from a source checkout:
 
 ```bash
