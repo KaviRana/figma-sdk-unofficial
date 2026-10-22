@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" font-family="Menlo, Consolas, monospace">
+  <rect width="1200" height="420" fill="#111111"/>
+  <g font-size="30">
+    <rect x="60" y="110" width="330" height="200" rx="12" fill="#1e1e1e" stroke="#444"/>
+    <text x="90" y="165" fill="#9a9a9a">// you edit</text>
+    <text x="90" y="225" fill="#ffffff">"ttl": <tspan fill="#f5c518">30000</tspan></text>
+    <text x="415" y="225" fill="#9a9a9a" font-size="44">→</text>
+    <rect x="475" y="110" width="250" height="200" rx="12" fill="#1e1e1e" stroke="#444"/>
+    <text x="505" y="165" fill="#9a9a9a">$ generate</text>
+    <text x="505" y="225" fill="#7a7a7a">no warning</text>
+    <text x="750" y="225" fill="#9a9a9a" font-size="44">→</text>
+    <rect x="810" y="110" width="330" height="200" rx="12" fill="#1e1e1e" stroke="#444"/>
+    <text x="840" y="165" fill="#9a9a9a">// result</text>
+    <text x="840" y="225" fill="#ffffff">"ttl": <tspan fill="#ff6b6b">5000</tspan></text>
+  </g>
+</svg>
